@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSettingsPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabSettingsPageViewModel.Self}"
+             x:Name="This"
+             Title="Business Profile">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="BusinessProfile"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <controls:HorizontalButton Image="icon8.png" Text="BUSINESS ACCOUNT" OnClicked="GoToBusinessAccountSettings"/>
+                    <controls:HorizontalButton Image="Cash_Blue.png" Text="Currency &amp; Tax" OnClicked="GoToBusinessCurrencySettings"/>
+                    
+                    <!--
+                    <controls:TabControl Tabs="{Binding Tabs, Source={x:Reference This}}" HasUnderline="True"/>
+                    <ScrollView x:Name="Tab1">
+                        <Label Text="About us"/>
+                    </ScrollView>
+                    <ScrollView x:Name="Tab2">
+                        <StackLayout Orientation="Vertical">
+                            <controls:HorizontalButton Image="Bank.png" Text="PHONE NUMBER" IsBold="True" />
+                            <controls:HorizontalButton Image="Bank.png" Text="EMAIL" IsBold="True" />
+                            <controls:HorizontalButton Image="Bank.png" Text="FACEBOOK" IsBold="True" />
+                            <controls:HorizontalButton Image="Bank.png" Text="TWITTER" IsBold="True" />
+                            <controls:HorizontalButton Image="Bank.png" Text="WHATSAPP" IsBold="True" />
+                            <controls:HorizontalButton Image="Bank.png" Text="INSTAGRAM" IsBold="True" />
+                        </StackLayout>
+                    </ScrollView>
+                    -->
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeterKApplication.Controls.NavigationBar"
+             x:Name="This" HeightRequest="{Binding RowHeight, Source={x:Reference This}}">
+    <ContentView.Content>
+        <Grid HorizontalOptions="FillAndExpand" BindingContext="{x:Reference This}" Padding="0" Margin="7,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{Binding RowHeight}"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Column="0" Source="BackTo.png" HorizontalOptions="Center" VerticalOptions="Center"
+                   IsVisible="{Binding HasBackButton}" WidthRequest="24" HeightRequest="24" Margin="3">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="0" Source="{Binding LeftImage}" HorizontalOptions="Center" VerticalOptions="Center"
+                   IsVisible="{Binding LeftImage, Converter={StaticResource IsTruthy}}" WidthRequest="24"
+                   HeightRequest="24" Margin="3">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped3" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Grid.Column="1" Text="{Binding Text}" VerticalOptions="Center" HorizontalOptions="CenterAndExpand"
+                   IsVisible="{Binding Text, Converter={StaticResource IsTruthy}}" />
+            <Image Grid.Column="1" Source="{Binding CenterImage}" HorizontalOptions="Center" VerticalOptions="Center"
+                   IsVisible="{Binding CenterImage, Converter={StaticResource IsTruthy}}" HeightRequest="{Binding CenterImageHeight}"
+                   Margin="3" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped4" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Source="{Binding RightImage}"
+                   WidthRequest="24" Margin="3" HeightRequest="24">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped2" />
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

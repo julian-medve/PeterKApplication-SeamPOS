@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabStaffPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Name="This"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabStaffPageViewModel.Self}"
+             Title="Staff">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Staff"
+                HasBackButton="True" 
+                RightImage="icon9.png"
+                RightImageTapped="NewStaffMemberClicked"/>
+            
+            <controls:AppSearchBar Placeholder="Search by name" RightSideIcon="False" Margin="20,0" Text="{Binding SearchText}"/>
+            <ListView ItemsSource="{Binding FilteredStaffList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <controls:HorizontalButton RawImage="{Binding Image}" FallbackImage="Staff_Blue.png"
+                                                       Text="{Binding UserName}"
+                                                       Subtitle="{Binding Orders.Count, StringFormat='{0} Sales'}"
+                                                       OnClicked="StaffMemberClicked" OriginalObject="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

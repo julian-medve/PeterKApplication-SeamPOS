@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabLocationsPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Name="This"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabStaffPageViewModel.Self}"
+             Title="Locations">
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:NavigationBar Text="Business Locations" HasBackButton="True" />
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="NewLocationMemberClicked" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="Add.png" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50" />
+            </StackLayout>
+            
+            <ListView ItemsSource="{Binding LocationList}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <controls:HorizontalButton Text="{Binding Name}" Image="set7.png"
+                                                       OnClicked="LocationMemberClicked" OriginalObject="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:PeterKApplication.Converters"
+             xmlns:context="clr-namespace:ContextMenu.Views;assembly=ContextMenu"
+             xmlns:models="clr-namespace:PeterKApplication.Shared.Models;assembly=PeterKApplication.Shared"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             mc:Ignorable="d"
+             x:Name="This"
+             x:Class="PeterKApplication.Controls.ProductList">
+    <ContentView.Content>
+        <CollectionView ItemsSource="{Binding Products}"
+                        BindingContext="{x:Reference This}"
+                        x:Name="CollectionView"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <context:SideContextMenuView
+                        ForceCloseCommand="{Binding ForceCloseCommand, Source={x:Reference This}}">
+                        <context:SideContextMenuView.View>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                  Margin="10"
+                                  WidthRequest="{Binding Source={x:Reference CollectionView}, Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='20'}">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                          Command="{Binding ItemTapped, Source={x:Reference This}}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Source="{Binding ImageModel.ImageData, Converter={StaticResource ByteArrayToImageSource}}"
+                                    IsVisible="{Binding ImageModel.ImageData, Converter={StaticResource IsTruthy}}"
+                                    Grid.Column="0"
+                                    WidthRequest="60"
+                                    HeightRequest="60"
+                                    HorizontalOptions="StartAndExpand"
+                                    VerticalOptions="StartAndExpand" />
+
+                                <Image Source="ImaePlacement.png"
+                                       IsVisible="{Binding ImageModel.ImageData, Converter={StaticResource IsNotTruthy}}"
+                                       Grid.Column="0"
+                                       WidthRequest="30"
+                                       HeightRequest="30"
+                                       Margin="15"
+                                       HorizontalOptions="StartAndExpand"
+                                       VerticalOptions="StartAndExpand" />
+
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="2*" />
+                                        <RowDefinition Height="3*" />
+                                    </Grid.RowDefinitions>
+
+                                    <StackLayout Grid.Row="0"
+                                                 Orientation="Horizontal">
+                                        <Label HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontAttributes="Bold"
+                                               FontSize="Medium"
+                                               Text="{Binding Name}" />
+
+                                        <Label HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontAttributes="Bold"
+                                               FontSize="Small"
+                                               Text="{Binding PriceLabel}" />
+                                        
+                                        <!--="{Binding Price, StringFormat='{0:C2}'}" /-->
+                                        
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1"
+                                                 Orientation="Horizontal">
+                                        <Label HorizontalOptions="StartAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontSize="Small"
+                                               Text="{Binding Description}" />
+
+                                        <Label HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontSize="Small"
+                                               Text="{Binding RemainingQuantity, StringFormat='STOCK: {0}'}" />
+
+                                        <Image HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="EndAndExpand"
+                                               HeightRequest="30"
+                                               WidthRequest="30"
+                                               IsVisible="{Binding IsSelected, Converter={StaticResource Not}}"
+                                               Source="{Binding DefaultImage, Source={x:Reference This}}" />
+
+                                        <Image HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="EndAndExpand"
+                                               HeightRequest="30"
+                                               WidthRequest="30"
+                                               IsVisible="{Binding IsSelected}"
+                                               Source="{Binding SelectedImage, Source={x:Reference This}}" />
+                                    </StackLayout>
+                                </Grid>
+                            </Grid>
+                        </context:SideContextMenuView.View>
+                        <context:SideContextMenuView.ContextTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Horizontal"
+                                             Margin="0"
+                                             WidthRequest="180"
+                                             Padding="0">
+                                    <Frame HasShadow="False" BorderColor="{StaticResource GrayColor}"
+                                           CornerRadius="5"
+                                           VerticalOptions="Center"
+                                           HeightRequest="60"
+                                           Padding="0"
+                                           Margin="0"
+                                           WidthRequest="60"
+                                           HorizontalOptions="Center">
+                                        <controls:BorderlessEntry
+                                            Text="{Binding Quantity}"
+                                            HorizontalTextAlignment="Center"
+                                            HorizontalOptions="Center"
+                                            Margin="0"
+                                            VerticalTextAlignment="Center"
+                                            VerticalOptions="Center"
+                                            FontSize="24" />
+                                    </Frame>
+                                    <Image Source="Add_Sq.png"
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           VerticalOptions="Center"
+                                           Margin="0, 5">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding AddOneCommand, Source={x:Reference This}}"
+                                                CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Image Source="Cancel_Sq.png"
+                                           WidthRequest="60"
+                                           HeightRequest="60"
+                                           VerticalOptions="Center"
+                                           Margin="-5, 5, 0, 5">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding DeleteAllCommand, Source={x:Reference This}}"
+                                                CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+
+                                </StackLayout>
+
+                            </DataTemplate>
+                        </context:SideContextMenuView.ContextTemplate>
+
+                    </context:SideContextMenuView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentView.Content>
+</ContentView>

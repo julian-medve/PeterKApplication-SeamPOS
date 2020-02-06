@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5506151C-C15A-4240-A46B-B8300CCB955F}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PeterKApplication.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>PeterKApplication.iOS</AssemblyName>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <BuildIpa>True</BuildIpa>
+    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignProvision>Automatic:AppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\BorderlessEntryRenderer.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.35" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Pdf">
+      <Version>17.3.0.33</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.iTextSharpLGPL">
+      <Version>0.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.947036" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PeterKApplication\PeterKApplication.csproj">
+      <Project>{21FCB6ED-7532-4755-8F34-7277590DEAAF}</Project>
+      <Name>PeterKApplication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\invoice.png" />
+    <BundleResource Include="Resources\splash.png" />
+    <BundleResource Include="Resources\Add.png" />
+    <BundleResource Include="Resources\Add_Sq.png" />
+    <BundleResource Include="Resources\analytics.png" />
+    <BundleResource Include="Resources\BackTo.png" />
+    <BundleResource Include="Resources\Bank.png" />
+    <BundleResource Include="Resources\book.png" />
+    <BundleResource Include="Resources\book_white.png" />
+    <BundleResource Include="Resources\BorderLine.png" />
+    <BundleResource Include="Resources\Business_Icon.png" />
+    <BundleResource Include="Resources\ButtonBig.png" />
+    <BundleResource Include="Resources\ButtonBig2.png" />
+    <BundleResource Include="Resources\ButtonWhite.png" />
+    <BundleResource Include="Resources\Cancel.png" />
+    <BundleResource Include="Resources\Cancel_Sq.png" />
+    <BundleResource Include="Resources\CartIconSelected.png" />
+    <BundleResource Include="Resources\Cart_Icon.png" />
+    <BundleResource Include="Resources\Cash_Blue.png" />
+    <BundleResource Include="Resources\Checkout_Icon.png" />
+    <BundleResource Include="Resources\Cheque.png" />
+    <BundleResource Include="Resources\Cross_Red.png" />
+    <BundleResource Include="Resources\dashboard.png" />
+    <BundleResource Include="Resources\DropDownBoxInput.png" />
+    <BundleResource Include="Resources\DropM.png" />
+    <BundleResource Include="Resources\EllipseSelect.png" />
+    <BundleResource Include="Resources\EllipseShape.png" />
+    <BundleResource Include="Resources\ExpandDropContent.png" />
+    <BundleResource Include="Resources\Grp1Icon.png" />
+    <BundleResource Include="Resources\HeaderBotton_Line.png" />
+    <BundleResource Include="Resources\HeaderBox.png" />
+    <BundleResource Include="Resources\HeaderBoxGrey.png" />
+    <BundleResource Include="Resources\HeaderTop_Line.png" />
+    <BundleResource Include="Resources\HoverMenuBox.png" />
+    <BundleResource Include="Resources\icon1.png" />
+    <BundleResource Include="Resources\icon1a.png" />
+    <BundleResource Include="Resources\icon2.png" />
+    <BundleResource Include="Resources\icon2a.png" />
+    <BundleResource Include="Resources\icon7.png" />
+    <BundleResource Include="Resources\icon8.png" />
+    <BundleResource Include="Resources\icon8a.png" />
+    <BundleResource Include="Resources\icon9.png" />
+    <BundleResource Include="Resources\ImaePlacement.png" />
+    <BundleResource Include="Resources\ImagePlacement.png" />
+    <BundleResource Include="Resources\ItemsBox.png" />
+    <BundleResource Include="Resources\i_exclaim_icon.png" />
+    <BundleResource Include="Resources\i_info_icon.png" />
+    <BundleResource Include="Resources\i_info_icon_blue.png" />
+    <BundleResource Include="Resources\LineSeparator.png" />
+    <BundleResource Include="Resources\LineSeparatorNav.png" />
+    <BundleResource Include="Resources\LineSeperator.png" />
+    <BundleResource Include="Resources\LineSeperatorMenu.png" />
+    <BundleResource Include="Resources\Location_Drop_Box.png" />
+    <BundleResource Include="Resources\logo.png" />
+    <BundleResource Include="Resources\logout_white_icon.png" />
+    <BundleResource Include="Resources\Menu.png" />
+    <BundleResource Include="Resources\MenuBox.png" />
+    <BundleResource Include="Resources\message.png" />
+    <BundleResource Include="Resources\MoveTo.png" />
+    <BundleResource Include="Resources\mpesa.png" />
+    <BundleResource Include="Resources\mVisa3.png" />
+    <BundleResource Include="Resources\NAV2.png" />
+    <BundleResource Include="Resources\NAV2a.png" />
+    <BundleResource Include="Resources\Notifications.png" />
+    <BundleResource Include="Resources\NotSelectedItemsHM.png" />
+    <BundleResource Include="Resources\num_3.png" />
+    <BundleResource Include="Resources\offer_white.png" />
+    <BundleResource Include="Resources\OptionBox.png" />
+    <BundleResource Include="Resources\OptionBoxDGrey.png" />
+    <BundleResource Include="Resources\OptionBoxGrey.png" />
+    <BundleResource Include="Resources\options.png" />
+    <BundleResource Include="Resources\Options3Box.png" />
+    <BundleResource Include="Resources\Order.png" />
+    <BundleResource Include="Resources\Orders_Icon.png" />
+    <BundleResource Include="Resources\Pending_Yellow.png" />
+    <BundleResource Include="Resources\plusbutton.png" />
+    <BundleResource Include="Resources\PlusIconButton.png" />
+    <BundleResource Include="Resources\redcart.png" />
+    <BundleResource Include="Resources\RoundedRectangleBlue.png" />
+    <BundleResource Include="Resources\RoundedRectangleButtonBlue.png" />
+    <BundleResource Include="Resources\RoundedRectangleButtonBW.png" />
+    <BundleResource Include="Resources\RoundedRectangleButtonRW.png" />
+    <BundleResource Include="Resources\RoundedRectangleGrey.png" />
+    <BundleResource Include="Resources\SearchBox.png" />
+    <BundleResource Include="Resources\SearchIcon.png" />
+    <BundleResource Include="Resources\SelectedItemsHM.png" />
+    <BundleResource Include="Resources\SelectedItems_1.png" />
+    <BundleResource Include="Resources\SeperatorLine.png" />
+    <BundleResource Include="Resources\set1.png" />
+    <BundleResource Include="Resources\set10.png" />
+    <BundleResource Include="Resources\set2.png" />
+    <BundleResource Include="Resources\set3.png" />
+    <BundleResource Include="Resources\set4.png" />
+    <BundleResource Include="Resources\set5.png" />
+    <BundleResource Include="Resources\set6.png" />
+    <BundleResource Include="Resources\set7.png" />
+    <BundleResource Include="Resources\set8.png" />
+    <BundleResource Include="Resources\set9.png" />
+    <BundleResource Include="Resources\settings.png" />
+    <BundleResource Include="Resources\Share_Blue.png" />
+    <BundleResource Include="Resources\Share_Grey.png" />
+    <BundleResource Include="Resources\SM_icons.png" />
+    <BundleResource Include="Resources\staff.png" />
+    <BundleResource Include="Resources\Staff_Blue.png" />
+    <BundleResource Include="Resources\switch_thumb.png" />
+    <BundleResource Include="Resources\Sync_Refresh.png" />
+    <BundleResource Include="Resources\TabMenuLine.png" />
+    <BundleResource Include="Resources\TabSelected.png" />
+    <BundleResource Include="Resources\TabSelected_Blue.png" />
+    <BundleResource Include="Resources\TextBox.png" />
+    <BundleResource Include="Resources\TextBox_Dropdown_Input.png" />
+    <BundleResource Include="Resources\Tick_Green.png" />
+    <BundleResource Include="Resources\Titleheader_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\backspace_icon.png">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\back_w_icon.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\devices_icon.png">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dashboardmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\staffmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checkout_tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checkout_print.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeterKApplication.Controls.OverviewData"
+             x:Name="This">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" BindingContext="{x:Reference This}">
+            <StackLayout x:Name="MainData"/>
+
+            <!-- statistics text, 7 days and 30 days -->
+            <StackLayout Orientation="Horizontal" Margin="20" HeightRequest="36" HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" HeightRequest="34" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="22" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start"
+                           Text="Last 7 days"
+                           HeightRequest="12"
+                           FontSize="12" />
+                    <!--Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="End" HorizontalTextAlignment="End"
+                           FontAttributes="Bold"
+                           HeightRequest="12"
+                           FontSize="12" Text="{Binding CurrencyFormat}" /-->
+                    <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="End" HorizontalTextAlignment="Start"
+                           FontAttributes="Bold"
+                           HeightRequest="20"
+                           FontSize="20" Text="{Binding Summary.Last7Days}" />
+                </Grid>
+
+                <Grid HorizontalOptions="FillAndExpand" HeightRequest="34" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="14" />
+                        <RowDefinition Height="22" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Start"
+                           Text="Last 30 days"
+                           HeightRequest="12"
+                           FontSize="12" />
+                    <!--Label Grid.Column="0" Grid.Row="1" VerticalTextAlignment="End" HorizontalTextAlignment="End"
+                           FontAttributes="Bold"
+                           HeightRequest="12"
+                           FontSize="12" Text="{Binding CurrencyFormat}" /-->
+                    <Label Grid.Column="1" Grid.Row="1" VerticalTextAlignment="End" HorizontalTextAlignment="Start"
+                           FontAttributes="Bold"
+                           HeightRequest="20"
+                           FontSize="20" Text="{Binding Summary.Last30Days}" />
+                </Grid>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

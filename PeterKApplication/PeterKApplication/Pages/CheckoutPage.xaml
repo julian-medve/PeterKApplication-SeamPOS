@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             x:Name="This"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls"
+             BindingContext="{x:Static viewModels:CheckoutViewModel.Self}"
+             NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.CheckoutPage"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar LeftImage="BackTo.png"
+                                    LeftImageTapped="NavigationBar_LeftImageTapped"
+                                    Text="{Binding HeaderTitle, Source={x:Reference This}}"/>
+
+            <controls:CheckoutStateBar IsCartFinish="{Binding IsCartFinish, Source={x:Reference This}}" 
+                                       IsPaymentFinish="{Binding IsPaymentFinish, Source={x:Reference This}}" />
+
+            <ScrollView x:Name="CartStage"
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="True">
+                
+                <StackLayout Orientation="Vertical">
+                    
+                    <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="CART" HasBackground="True"/>
+                    
+                    <controls:CheckoutCartList ProductList="{Binding Products}"/>
+
+                    <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="DELIVERY INFORMATION" HasBackground="True"/>
+
+                    
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20,0">
+                        <controls:FormInput Label="Address" ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryAddress}" />
+                        <controls:FormInput Label="{Binding DeliveryLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryPrice}" />
+                    </StackLayout>
+                    
+                    
+                    
+                    <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="CART OPTIONS" HasBackground="True"/>
+
+                    <controls:FormInput Label="{Binding DiscountLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding Discount}" />
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                        <Label Text="SEND AS INVOICE" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="SendAsInvoice" BackgroundColor="Transparent"/>
+                    </StackLayout>
+
+                    <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="SUB TOTAL" HasBackground="True" RightSideText="{Binding TotalLabel}" Margin="0" Padding="0"/>
+
+                    <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="{Binding TaxLabel}" HasBackground="True" RightSideText="{Binding TotalTextWithTax}" Margin="0" Padding="0"/>
+                    
+                    <Grid HorizontalOptions="FillAndExpand"
+                          Margin="10"
+                          HeightRequest="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame BackgroundColor="{StaticResource MainBlueColor}"
+                               HasShadow="False"
+                               Padding="20, 0"
+                               Grid.Column="0">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
+                                
+                                <Label Text="PROCESS ORDER"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="WordWrap" 
+                                       FontSize="14"
+                                       TextColor="White"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                               BorderColor="{StaticResource MainBlueColor}"
+                               Grid.Column="1"
+                               Padding="0"
+                               HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                            </Frame.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
+                                <Label Text="SAVE / PENDING ORDER" 
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       LineBreakMode="WordWrap" 
+                                       FontSize="14"
+                                       TextColor="{StaticResource MainBlueColor}"/>
+                            </Grid>
+                        </Frame>
+
+                        <Frame BackgroundColor="White"
+                               BorderColor="{StaticResource MainRedColor}"
+                               Grid.Column="2"
+                               Padding="0"
+                               HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                            </Frame.GestureRecognizers>
+                            <Grid HorizontalOptions="FillAndExpand"
+                                  VerticalOptions="FillAndExpand">
+                                <Label Text="CANCEL" 
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       FontSize="14"
+                                       TextColor="{StaticResource MainRedColor}"/>
+                            </Grid>
+                        </Frame>
+                               
+                    </Grid>
+                </StackLayout>
+                
+            </ScrollView>
+
+            <ScrollView x:Name="PaymentStage"
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="False">
+                <controls:PairedList Items="{Binding PairedPaymentTypes}"
+                                     SingleSelection="True"
+                                     ListItemTapped="PairedList_ListItemTapped"/>
+
+            </ScrollView>
+
+            <ScrollView x:Name="ConfirmationStage"
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="False">
+                <StackLayout Orientation="Vertical">
+
+                    <!-- Image Source="checkout_tick_gif.gif"
+                           HeightRequest="150"
+                           WidthRequest="150"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Start"/-->
+
+                    <ffimageloading:CachedImage 
+                            Source="{Binding CheckoutImage}"
+                            HeightRequest="120"
+                            WidthRequest="120" >
+
+                    </ffimageloading:CachedImage>
+                    
+                    <Label Text="Congratulations"
+                           FontSize="24"
+                           Margin="0, 10, 0, 0"
+                           HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"/>
+                    <Label Text="Order is Complete"
+                           FontSize="24"
+                           HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Label Text="You may print, Text (SMS) and or Email receipt to customer. Options Below."
+                           HorizontalOptions="FillAndExpand"
+                           Margin="30, 10"
+                           HorizontalTextAlignment="Center"
+                           LineBreakMode="WordWrap" />
+
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             HeightRequest="1"
+                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                    <!--Grid Margin="20, 0, 0, 0">
+                        <Label Text="Price Receipt"
+                               HorizontalOptions="StartAndExpand"
+                               FontSize="12"
+                               VerticalOptions="Center"/>
+                        <CheckBox HorizontalOptions="EndAndExpand"
+                                  Margin="0, 0, 20, 0"
+                                  VerticalOptions="Center"/>
+                    </Grid-->
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                        <Label Text="Print Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        <ImageButton Source="checkout_print.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="PrintReceipt" BackgroundColor="Transparent"/>
+                    </StackLayout>
+
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             HeightRequest="1"
+                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                        <Label Text="Email Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="EmailReceipt" BackgroundColor="Transparent"/>
+                    </StackLayout>
+
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             HeightRequest="1"
+                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                        <Label Text="Text(SMS) Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                        <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="TextReceipt" BackgroundColor="Transparent"/>
+                    </StackLayout>
+                    
+
+                    <!--Label Text="Price Receipt"
+                           Margin="20, 0, 0, 0"
+                           FontSize="12"
+                           HorizontalOptions="Start" Text(SMS) -->
+                    
+                    <!--Label Text="07221234567"
+                           Margin="20, 0, 0, 0"
+                           FontSize="12"
+                           HorizontalOptions="Start"
+                           TextColor="{StaticResource GrayColor}"/-->
+
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             HeightRequest="1"
+                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                    <controls:AppButton Text="DONE"
+                                        IsPrimary="True"
+                                        Margin="20, 10, 20, 0"
+                                        OnClicked="AppButton_OnClicked"
+                                        IsBig="True"
+                                        IsOutline="False"/>
+
+                    <controls:AppButton Text="View Order"
+                                        IsPrimary="True"
+                                        OnClicked="AppButton_OnClicked"
+                                        Margin="20, 0"
+                                        IsBig="True"
+                                        IsOutline="True"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

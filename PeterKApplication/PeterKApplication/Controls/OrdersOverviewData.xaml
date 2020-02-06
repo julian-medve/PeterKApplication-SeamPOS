@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeterKApplication.Controls.OrdersOverviewData"
+             x:Name="This">
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical" BindingContext="{x:Reference This}">
+            <Label Text="TOTAL ORDERS" Margin="50,10,10,10"/>
+            <StackLayout Orientation="Horizontal" Padding="20,0">
+                <Label Text="{Binding CurrencyFormat}" FontSize="28" FontAttributes="Bold" HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Margin="0,0,0,8" />
+                <Label Text="{Binding Data.Amount, StringFormat='{0:0.00}'}" FontSize="48" TextColor="{StaticResource MainBlueColor}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="End"
+                       HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="20,0">
+                <Label Text="No. OF ORDERS" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start"
+                       VerticalOptions="End"
+                       Margin="0,0,0,8" />
+                <Label Text="{Binding Data.Quantity, StringFormat='{0:0.00}'}" FontSize="48" TextColor="{StaticResource MainBlueColor}"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="End"
+                       HorizontalOptions="EndAndExpand" />
+            </StackLayout>
+            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Padding="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="24"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="1" Text="Highest" FontSize="12" TextColor="{StaticResource GrayColor}"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="{Binding CurrencyFormat}" FontAttributes="Bold" FontSize="12" HorizontalOptions="End" VerticalOptions="End"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding Data.Highest, StringFormat='{0}k'}" FontSize="20" FontAttributes="Bold"/>
+                
+                <Label Grid.Row="0" Grid.Column="4" Text="Lowest" FontSize="12" TextColor="{StaticResource GrayColor}"/>
+                <Label Grid.Row="1" Grid.Column="3" Text="{Binding CurrencyFormat}" FontAttributes="Bold" FontSize="12" HorizontalOptions="End" VerticalOptions="End"/>
+                <Label Grid.Row="1" Grid.Column="4" Text="{Binding Data.Lowest, StringFormat='{0}k'}" FontSize="20" FontAttributes="Bold"/>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

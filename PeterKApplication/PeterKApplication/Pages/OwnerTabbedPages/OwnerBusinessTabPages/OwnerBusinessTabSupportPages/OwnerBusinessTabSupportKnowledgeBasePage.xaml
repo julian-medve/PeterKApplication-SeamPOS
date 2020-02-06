@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:videoPlayer1="clr-namespace:Xam.Forms.VideoPlayer;assembly=Xam.Forms.VideoPlayer"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSupportPages.OwnerBusinessTabSupportKnowledgeBasePage"
+             x:Name="This"
+             Title="Knowledge Base">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BindingContext="{x:Reference This}">
+            <controls:NavigationBar
+                Text="Knowledge Base"
+                HasBackButton="True" />
+            <StackLayout Orientation="Vertical">
+                <ListView ItemsSource="{Binding KnowledgeBase}" HasUnevenRows="True" SelectionMode="None">
+                    <ListView.Header>
+                        <Label Text="Getting started..." FontSize="18" Margin="10"/>
+                    </ListView.Header>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Padding="10">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ToggleVisibility, Source={x:Reference This}}" CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Text="{Binding Title}" HorizontalOptions="StartAndExpand" VerticalOptions="Center"/>
+                                        <Label Text="{Binding HeaderIcon}" TextColor="{StaticResource MainBlueColor}" FontSize="18" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" IsVisible="{Binding IsVisible}">
+                                        <Label Text="{Binding Description}"
+                                               IsVisible="{Binding Description, Converter={StaticResource IsTruthy}}" />
+                                        <Image
+                                            Source="{Binding Image.ImageData, Converter={StaticResource ByteArrayToImageSource}}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            IsVisible="{Binding Image.ImageData, Converter={StaticResource IsTruthy}}" />
+                                        <videoPlayer1:VideoPlayer Source="{Binding VideoUri, Converter={StaticResource ToVideoSource}}"
+                                                                 AutoPlay="True"
+                                                                 AreTransportControlsEnabled="True"
+                                                                 IsVisible="{Binding VideoUri, Converter={StaticResource IsTruthy}}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

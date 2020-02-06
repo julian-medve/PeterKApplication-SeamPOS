@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerDashboardTabPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerDashboardTabPageViewModel.Self}"
+             x:Name="This">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:NavigationBar LeftImage="Menu.png" CenterImage="logo.png"
+                                    LeftImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}" />
+
+            <ScrollView>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical"
+                                 IsVisible="{Binding HasFirstSale, Converter={StaticResource Not}}">
+                        <controls:HeaderText Text="Add Products" IsBig="True" />
+                        <Label Text="Get started by adding your first" HorizontalOptions="Center" />
+                        <Label Text="product in POS and start" HorizontalOptions="Center" />
+                        <Label Text="selling right away" HorizontalOptions="Center" />
+                        <Image HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                               Source="ImaePlacement.png" HeightRequest="30" WidthRequest="30" Margin="75" />
+                        <controls:CarouselDots />
+                        <controls:HeaderText Text="Getting started" HasBackground="True" />
+                        <controls:HorizontalButton Image="PlusIconButton.png" Text="Add Products"
+                                                   OnClicked="OnGoToProducts" />
+                        <controls:HorizontalButton Image="Staff_Blue.png" Text="Add Staff" OnClicked="OnGoToStaff" />
+                        <controls:HorizontalButton Image="Cash_Blue.png" Text="Setup Payments"
+                                                   OnClicked="OnGoToPayments" />
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" IsVisible="{Binding HasFirstSale}">
+                        <controls:HeaderText Text="Business Overview" HasBackground="True" />
+
+                        <Frame CornerRadius="20" HeightRequest="30" HasShadow="False"
+                               BorderColor="{StaticResource LightDarkGrayColor}" Margin="30,0" Padding="0,5">
+                            <Grid HeightRequest="30" Margin="5,0" Padding="0" BindingContext="{x:Reference This}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Frame Grid.Column="0" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                                       CornerRadius="15"
+                                       HasShadow="false" BackgroundColor="{Binding Tab1.BgColor}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab1" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                                       CornerRadius="15"
+                                       HasShadow="False" BackgroundColor="{Binding Tab2.BgColor}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab2" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                                <Frame Grid.Column="2" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                                       CornerRadius="15"
+                                       HasShadow="false" BackgroundColor="{Binding Tab3.BgColor}">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab3" />
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+
+                                <Label Grid.Column="0"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       Text="Sales" Margin="0" FontSize="12" TextColor="{Binding Tab1.TextColor}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab1" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Column="1"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       Text="Offers" Margin="0" FontSize="12" TextColor="{Binding Tab2.TextColor}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab2" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Column="2"
+                                       HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       VerticalTextAlignment="Center"
+                                       Text="Revenue" Margin="0" FontSize="12" TextColor="{Binding Tab3.TextColor}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="GoToTab3" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </Grid>
+                        </Frame>
+
+                        <controls:OverviewData x:Name="Tab1Data" IsVisible="False" Data="{Binding SalesData}"
+                                               Summary="{Binding SalesSummary}" />
+                        <controls:OverviewData x:Name="Tab2Data" IsVisible="False" Data="{Binding OffersData}"
+                                               Summary="{Binding OffersSummary}" />
+                        <controls:OverviewData x:Name="Tab3Data" IsVisible="False" Data="{Binding RevenueData}"
+                                               Summary="{Binding RevenueSummary}" />
+
+                        <controls:HeaderText Text="Manage Business" HasBackground="True" />
+                        <controls:HorizontalButton Image="PlusIconButton.png" Text="Manage Products"
+                                                   OnClicked="OnGoToProducts" />
+                        <controls:HorizontalButton Image="Staff_Blue.png" Text="Manage Staff" OnClicked="OnGoToStaff" />
+                        <controls:HorizontalButton Image="Cash_Blue.png" Text="Manage Payments"
+                                                   OnClicked="OnGoToPayments" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

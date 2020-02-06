@@ -1,0 +1,41 @@
+﻿@page "{id:Guid?}"
+@model PeterKApplication.Web.Pages.KnowledgeBase.Edit
+
+@{
+    ViewData["Title"] = Model.KnowledgeBase.Title;
+}
+
+<h1>@Html.DisplayFor(model => model.KnowledgeBase.Title)</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Video</th>
+        <th>Image upload</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="KnowledgeBase.Id" />
+            <td>
+                @Html.EditorFor(model => model.KnowledgeBase.Title)
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.KnowledgeBase.Description)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.KnowledgeBase.VideoUri)
+            </td>
+            <td>
+                <input type="file" asp-for="UploadImage" /> 
+            </td>
+            <td>
+                <input type="submit" name="save" value="Save" />
+            </td>
+        </form>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSettingsPages.OwnerBusinessTabSettingsBusinessAccountPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabSettingsBusinessAccountPageViewModel.Self}"
+             Title="BUSINESS ACCOUNT">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="BUSINESS ACCOUNT"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    
+                    <!--controls:CenterImageOrCirclePlus Image="{Binding Business.Image.ImageData}"
+                                                      ImageChanged="CenterImageOrCirclePlus_OnImageChanged" /-->
+                    
+                    <controls:FormInput Label="Name" Text="{Binding Me.FirstName}" />
+                    <controls:FormInput Label="Business Name" Text="{Binding Business.Name}" />
+                    <controls:FormInput Label="Location" Text="{Binding Business.BusinessLocation.Name}" />
+                    <controls:FormInput Label="E-mail" Text="{Binding Business}" />
+                    <controls:FormInput Label="Phone" ShowChangeButton="True" Text="{Binding Me.PhoneNumber}" />
+                    <controls:FormInput Label="Password" ShowChangeButton="True" />
+                    <StackLayout Orientation="Vertical" Padding="20,0">
+                        <controls:AppButton IsPrimary="True" Text="EDIT" IsBig="True" />
+                        <controls:AppButton IsPrimary="True" Text="SAVE" IsBig="True" IsOutline="True"
+                                            OnClicked="SaveClicked" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

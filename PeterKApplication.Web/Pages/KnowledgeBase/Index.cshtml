@@ -1,0 +1,55 @@
+﻿@page
+@model PeterKApplication.Web.Pages.KnowledgeBase.Index
+
+@{
+    ViewData["Title"] = "Knowledge Base";
+}
+
+<h1>Knowledge Base</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Video URL</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var k in Model.KnowledgeBases)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(_ => k.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(_ => k.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(_ => k.VideoUri)
+            </td>
+            @if (k.Image != null)
+            {
+                <td>
+                    @if(k.Image?.ImageData is byte[] bytes)
+                    {
+                        var base64 = Convert.ToBase64String(bytes);
+                        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <a href="/api/Images/@k.Image.Id">Image</a>
+                </td>
+            }
+            else
+            {
+                <td>No image</td>
+            }
+            <td>
+                <a asp-page="./Edit" asp-route-id="@k.Id">Edit</a> | 
+                <a asp-page="./Delete" asp-route-id="@k.Id">Delete</a>
+            </td>
+        </tr>
+    }
+    <a class="btn btn-primary" href="/KnowledgeBase/Edit">Add new</a>
+    </tbody>
+</table>

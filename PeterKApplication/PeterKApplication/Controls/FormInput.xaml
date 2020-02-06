@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Controls.FormInput"
+             Padding="0"
+             x:Name="This" HorizontalOptions="FillAndExpand">
+    <ContentView.Content>
+        <StackLayout Orientation="Horizontal" BindingContext="{x:Reference This}" HorizontalOptions="FillAndExpand" Padding="0">
+            <Label Text="{Binding Label}" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,10,0,0" WidthRequest="65" LineBreakMode="WordWrap"/>
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0" Padding="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="0" Padding="0">
+                    <controls:BorderlessEntry Focused="VisualElement_OnFocused" Unfocused="VisualElement_OnUnfocused" Text="{Binding Text, Mode=TwoWay}" Margin="0" Placeholder="{Binding Placeholder}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" IsEnabled="{Binding EnableEntry}"/>
+                    <Label Text="Change" TextColor="{StaticResource MainBlueColor}" HorizontalOptions="End" VerticalOptions="Center" Margin="0,0,10,0" IsVisible="{Binding ShowChangeButton}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <BoxView Grid.Row="1" HeightRequest="1" HorizontalOptions="FillAndExpand" Margin="0" VerticalOptions="End"  BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

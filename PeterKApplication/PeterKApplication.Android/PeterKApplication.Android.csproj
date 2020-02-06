@@ -1,0 +1,299 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B5FB9659-C299-41BE-9A89-95226A384437}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PeterKApplication.Android</RootNamespace>
+    <AssemblyName>PeterKApplication.Android</AssemblyName>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+    <LangVersion>7.3</LangVersion>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <MandroidI18n />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>armeabi-v7a;arm64-v8a;x86;x86_64</AndroidSupportedAbis>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.35" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>3.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="ContextViewCell">
+      <Version>2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNetCore.Identity">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Pdf">
+      <Version>17.3.0.33</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.iTextSharpLGPL">
+      <Version>0.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.947036" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="28.0.0.3" />
+    <PackageReference Include="Xam.Plugin.TabView">
+      <Version>1.0.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\BorederlessEntryRenderer.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\InitializationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\app_icon_logo.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\done.png" />
+    <AndroidResource Include="Resources\drawable\invoice.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable\Add.png" />
+    <AndroidResource Include="Resources\drawable\Add_Sq.png" />
+    <AndroidResource Include="Resources\drawable\analytics.png" />
+    <AndroidResource Include="Resources\drawable\backspace_icon.png" />
+    <AndroidResource Include="Resources\drawable\BackTo.png" />
+    <AndroidResource Include="Resources\drawable\back_w_icon.png" />
+    <AndroidResource Include="Resources\drawable\Bank.png" />
+    <AndroidResource Include="Resources\drawable\book.png" />
+    <AndroidResource Include="Resources\drawable\book_white.png" />
+    <AndroidResource Include="Resources\drawable\BorderLine.png" />
+    <AndroidResource Include="Resources\drawable\Business_Icon.png" />
+    <AndroidResource Include="Resources\drawable\ButtonBig.png" />
+    <AndroidResource Include="Resources\drawable\ButtonBig2.png" />
+    <AndroidResource Include="Resources\drawable\ButtonWhite.png" />
+    <AndroidResource Include="Resources\drawable\Cancel.png" />
+    <AndroidResource Include="Resources\drawable\Cancel_Sq.png" />
+    <AndroidResource Include="Resources\drawable\CartIconSelected.png" />
+    <AndroidResource Include="Resources\drawable\Cart_Icon.png" />
+    <AndroidResource Include="Resources\drawable\Cash_Blue.png" />
+    <AndroidResource Include="Resources\drawable\Checkout_Icon.png" />
+    <AndroidResource Include="Resources\drawable\Cheque.png" />
+    <AndroidResource Include="Resources\drawable\Cross_Red.png" />
+    <AndroidResource Include="Resources\drawable\dashboardnav.png" />
+    <AndroidResource Include="Resources\drawable\devices_icon.png" />
+    <AndroidResource Include="Resources\drawable\DropDownBoxInput.png" />
+    <AndroidResource Include="Resources\drawable\DropM.png" />
+    <AndroidResource Include="Resources\drawable\EllipseSelect.png" />
+    <AndroidResource Include="Resources\drawable\EllipseShape.png" />
+    <AndroidResource Include="Resources\drawable\ExpandDropContent.png" />
+    <AndroidResource Include="Resources\drawable\Grp1Icon.png" />
+    <AndroidResource Include="Resources\drawable\HeaderBotton_Line.png" />
+    <AndroidResource Include="Resources\drawable\HeaderBox.png" />
+    <AndroidResource Include="Resources\drawable\HeaderBoxGrey.png" />
+    <AndroidResource Include="Resources\drawable\HeaderTop_Line.png" />
+    <AndroidResource Include="Resources\drawable\HoverMenuBox.png" />
+    <AndroidResource Include="Resources\drawable\i_exclaim_icon.png" />
+    <AndroidResource Include="Resources\drawable\i_info_icon_blue.png" />
+    <AndroidResource Include="Resources\drawable\i_info_icon.png" />
+    <AndroidResource Include="Resources\drawable\icon1.png" />
+    <AndroidResource Include="Resources\drawable\icon1a.png" />
+    <AndroidResource Include="Resources\drawable\icon2.png" />
+    <AndroidResource Include="Resources\drawable\icon2a.png" />
+    <AndroidResource Include="Resources\drawable\icon7.png" />
+    <AndroidResource Include="Resources\drawable\icon8.png" />
+    <AndroidResource Include="Resources\drawable\icon8a.png" />
+    <AndroidResource Include="Resources\drawable\icon9.png" />
+    <AndroidResource Include="Resources\drawable\ImaePlacement.png" />
+    <AndroidResource Include="Resources\drawable\ImagePlacement.png" />
+    <AndroidResource Include="Resources\drawable\ItemsBox.png" />
+    <AndroidResource Include="Resources\drawable\LineSeparator.png" />
+    <AndroidResource Include="Resources\drawable\LineSeparatorNav.png" />
+    <AndroidResource Include="Resources\drawable\LineSeperator.png" />
+    <AndroidResource Include="Resources\drawable\LineSeperatorMenu.png" />
+    <AndroidResource Include="Resources\drawable\Location_Drop_Box.png" />
+    <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\logout_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\Menu.png" />
+    <AndroidResource Include="Resources\drawable\MenuBox.png" />
+    <AndroidResource Include="Resources\drawable\message.png" />
+    <AndroidResource Include="Resources\drawable\MoveTo.png" />
+    <AndroidResource Include="Resources\drawable\mpesa.png" />
+    <AndroidResource Include="Resources\drawable\mVisa3.png" />
+    <AndroidResource Include="Resources\drawable\NAV2.png" />
+    <AndroidResource Include="Resources\drawable\NAV2a.png" />
+    <AndroidResource Include="Resources\drawable\Notifications.png" />
+    <AndroidResource Include="Resources\drawable\NotSelectedItemsHM.png" />
+    <AndroidResource Include="Resources\drawable\num_3.png" />
+    <AndroidResource Include="Resources\drawable\offer_white.png" />
+    <AndroidResource Include="Resources\drawable\OptionBox.png" />
+    <AndroidResource Include="Resources\drawable\OptionBoxDGrey.png" />
+    <AndroidResource Include="Resources\drawable\OptionBoxGrey.png" />
+    <AndroidResource Include="Resources\drawable\options.png" />
+    <AndroidResource Include="Resources\drawable\Options3Box.png" />
+    <AndroidResource Include="Resources\drawable\Order.png" />
+    <AndroidResource Include="Resources\drawable\Orders_Icon.png" />
+    <AndroidResource Include="Resources\drawable\Pending_Yellow.png" />
+    <AndroidResource Include="Resources\drawable\plusbutton.png" />
+    <AndroidResource Include="Resources\drawable\PlusIconButton.png" />
+    <AndroidResource Include="Resources\drawable\redcart.png" />
+    <AndroidResource Include="Resources\drawable\RoundedRectangleBlue.png" />
+    <AndroidResource Include="Resources\drawable\RoundedRectangleButtonBlue.png" />
+    <AndroidResource Include="Resources\drawable\RoundedRectangleButtonBW.png" />
+    <AndroidResource Include="Resources\drawable\RoundedRectangleButtonRW.png" />
+    <AndroidResource Include="Resources\drawable\RoundedRectangleGrey.png" />
+    <AndroidResource Include="Resources\drawable\SearchBox.png" />
+    <AndroidResource Include="Resources\drawable\SearchIcon.png" />
+    <AndroidResource Include="Resources\drawable\SelectedItemsHM.png" />
+    <AndroidResource Include="Resources\drawable\SelectedItems_1.png" />
+    <AndroidResource Include="Resources\drawable\SeperatorLine.png" />
+    <AndroidResource Include="Resources\drawable\set1.png" />
+    <AndroidResource Include="Resources\drawable\set10.png" />
+    <AndroidResource Include="Resources\drawable\set2.png" />
+    <AndroidResource Include="Resources\drawable\set3.png" />
+    <AndroidResource Include="Resources\drawable\set4.png" />
+    <AndroidResource Include="Resources\drawable\set5.png" />
+    <AndroidResource Include="Resources\drawable\set6.png" />
+    <AndroidResource Include="Resources\drawable\set7.png" />
+    <AndroidResource Include="Resources\drawable\set8.png" />
+    <AndroidResource Include="Resources\drawable\set9.png" />
+    <AndroidResource Include="Resources\drawable\settings.png" />
+    <AndroidResource Include="Resources\drawable\Share_Blue.png" />
+    <AndroidResource Include="Resources\drawable\Share_Grey.png" />
+    <AndroidResource Include="Resources\drawable\SM_icons.png" />
+    <AndroidResource Include="Resources\drawable\staff.png" />
+    <AndroidResource Include="Resources\drawable\Staff_Blue.png" />
+    <AndroidResource Include="Resources\drawable\switch_thumb.png" />
+    <AndroidResource Include="Resources\drawable\switch_track_off.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\switch_track_on.xml" />
+    <AndroidResource Include="Resources\drawable\Sync_Refresh.png" />
+    <AndroidResource Include="Resources\drawable\TabMenuLine.png" />
+    <AndroidResource Include="Resources\drawable\TabSelected.png" />
+    <AndroidResource Include="Resources\drawable\TabSelected_Blue.png" />
+    <AndroidResource Include="Resources\drawable\TextBox.png" />
+    <AndroidResource Include="Resources\drawable\TextBox_Dropdown_Input.png" />
+    <AndroidResource Include="Resources\drawable\Tick_Green.png" />
+    <AndroidResource Include="Resources\drawable\Titleheader_bg.png" />
+    <AndroidResource Include="Resources\drawable\track.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\ViewCellBackground.axml">
+      <SubType>
+      </SubType>
+      <Generator>
+      </Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PeterKApplication\PeterKApplication.csproj">
+      <Project>{21FCB6ED-7532-4755-8F34-7277590DEAAF}</Project>
+      <Name>PeterKApplication</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\progress_bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\progress_bar_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkout_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\confirm_payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\confirm_payment_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\payment_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dashboardblue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dashboardmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\staffmenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkout_tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkout_print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkout_completed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\checkout_progress.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

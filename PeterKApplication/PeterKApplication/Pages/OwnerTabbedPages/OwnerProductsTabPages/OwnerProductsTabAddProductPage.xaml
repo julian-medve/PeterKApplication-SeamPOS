@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             BindingContext="{x:Static viewModels:OwnerProductsTabAddProductPageViewModel.Self}"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerProductsTabPages.OwnerProductsTabAddProductPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:NavigationBar HasBackButton="True" Text="Add Product" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    
+                    <StackLayout Padding="30" BackgroundColor="{StaticResource InputBorderColor}">
+                        <controls:CenterImageOrCirclePlus Image="{Binding Product.ImageModel.ImageData}"
+                                                          ImageChanged="CenterImageOrCirclePlus_OnImageChanged" />
+                    </StackLayout>
+                    <controls:FormDropDown Title="Location" Options="{Binding LocationNames}" 
+                                           SelectedOption="{Binding SelectedLocationName}" Padding="25,3" />
+                    
+                    <controls:FormDropDown Title="Category" Options="{Binding CategoryNames}"
+                                           SelectedOption="{Binding SelectedCategoryName}" Padding="25,3"/>
+                    <controls:FormDropDown Title="Brand" Padding="25,3"/>
+                    
+                    <controls:InputWithBorder Placeholder="Title" Text="{Binding Product.Name}" Padding="25,3"/>
+                    <controls:InputWithBorder Placeholder="Cost" Text="{Binding ProductCost}" Padding="25,3" Keyboard="Numeric"/>
+                    <controls:InputWithBorder Placeholder="Price" Text="{Binding ProductPrice}" Padding="25,3" Keyboard="Numeric"/>
+
+
+                    <!--controls:InputWithBorder Placeholder="Comission" Text="{Binding Commission}" Padding="25,3" Keyboard="Numeric"/-->
+
+                    <StackLayout Padding="30" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+
+                            <Label Text="MPRODUCTS (Measurable Products)" HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Product Sold By Measure." HorizontalOptions="StartAndExpand"/>
+                            <Label Text="Examples: Liquid / Per Foot / Per Meter" HorizontalOptions="StartAndExpand"/>
+                        </StackLayout>
+                        
+                        <CheckBox IsChecked="{Binding Product.IsMProduct}" HorizontalOptions="End" VerticalOptions="Center"  Color="{StaticResource MainBlueColor}" />
+                    </StackLayout>
+
+                    <controls:InputWithBorder Placeholder="Commission" Text="{Binding ProductCommission}" Padding="25,3" Keyboard="Numeric"/>
+
+                    
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="25,3">
+                        <Label Text="Commission" HorizontalOptions="Start" Margin="10,10,0,0"/>
+                        <controls:FormDropDown Title="Commission" HorizontalOptions="FillAndExpand" Margin="0" Options="{Binding CommissionPercentOptions}" SelectedOption="{Binding SelectedCommissionPercentOption}"/>
+                        <!--controls:FormDropDown Title="Currency" HorizontalOptions="FillAndExpand" Margin="0" Options="{Binding CurrencyOptions}" SelectedOption="{Binding SelectedCurrencyOption}"/-->
+                    </StackLayout>
+                    
+                    
+                    <controls:InputWithBorder Placeholder="Stock Quantity" Text="{Binding ProductQuantity}" Padding="25,3" Keyboard="Numeric"/>
+
+
+                    <controls:HeaderText IsBig="False" IsLeftAligned="True" Text="INFORMATION" IsBold="True"/>
+                    
+                    <!--StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="Weight" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Edit" HorizontalOptions="End" TextColor="{StaticResource MainBlueColor}" />
+                    </StackLayout-->
+
+                    <controls:InputWithBorder Placeholder="Weight" Text="{Binding ProductWeight}" Padding="25,3" Keyboard="Numeric"/>
+                    <controls:InputWithBorder Placeholder="Dimension" Text="{Binding ProductDimension}" Padding="25,3" Keyboard="Numeric"/>
+
+
+                    <!--BoxView HeightRequest="1" BackgroundColor="{StaticResource InputBorderColor}" />
+                    <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="Dimension" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="Edit" HorizontalOptions="End" TextColor="{StaticResource MainBlueColor}" />
+                    </-->
+                    
+                    
+                    <!--controls:HeaderText IsBig="False" IsLeftAligned="True" Text="BAR CODE ASCAN" IsBold="True"/>
+                    <Image Source="Grp1Icon.png" HorizontalOptions="Center" Margin="10" VerticalOptions="Center"
+                           HeightRequest="70" /-->
+                    
+                    <controls:HeaderText IsBig="False" IsLeftAligned="True" Text="DESCRIPTION" IsBold="True"/>
+
+
+                    <StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                        <controls:InputWithBorder Placeholder="Description" HorizontalOptions="StartAndExpand" Padding="25,0" HeightRequest="100" WidthRequest="300" Text="{Binding Product.Description}"/>
+                        <!--Label Text="Edit" HorizontalOptions="End" TextColor="{StaticResource MainBlueColor}" /-->
+                    </StackLayout>
+                    
+                    <controls:AppButton IsPrimary="True" IsBig="True" Text="SAVE AND ADD SIMILAR"
+                                        OnClicked="AppButton_OnOnClicked" Padding="30,0"/>
+                    <controls:AppButton IsPrimary="True" IsBig="True" Text="SAVE" IsOutline="True"
+                                        OnClicked="AppButton_OnOnClicked2" Padding="30,0"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

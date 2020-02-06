@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.TestingPage" x:Name="This">
+    <ContentPage.Content>
+        <ScrollView Padding="10">
+            <StackLayout BindingContext="{x:Reference This}">
+                <controls:CheckoutHoverMenu />
+                <controls:PairedList Items="{Binding PairListItems}" ListItemTapped="PairedList_OnListItemTapped"/>
+                <controls:PairedList Items="{Binding PairListItems}" SingleSelection="True" ListItemTapped="PairedList_OnListItemTapped"/>
+                
+                <controls:VerticalConnectedProgressRings Steps="{Binding VerticalSteps}"/>
+                
+                <controls:OrderDetails Order="{Binding Orders[0]}"/>
+                
+                <controls:AppSearchBar />
+                <controls:AppSearchBar Placeholder="Please search" />
+                <controls:AppSearchBar RightSideIcon="False" />
+
+                <controls:AppButton Text="BIG BUTTON" />
+                <controls:AppButton Text="SMALL BUTTON" IsBig="False" />
+
+                <controls:AppButton Text="BIG OUTLINE" IsOutline="True" />
+                <controls:AppButton Text="SMALL OUTLINE" IsBig="False" IsOutline="True" />
+
+                <controls:AppButton Text="BIG BUTTON" IsPrimary="False" />
+                <controls:AppButton Text="SMALL BUTTON" IsPrimary="False" IsBig="False" />
+
+                <controls:AppButton Text="BIG OUTLINE" IsPrimary="False" IsOutline="True" />
+                <controls:AppButton Text="SMALL OUTLINE" IsPrimary="False" IsBig="False" IsOutline="True" />
+
+                <controls:CircledNumber Text="0" />
+                <controls:CircledNumber Text="10" IsPrimary="False" />
+
+                <controls:OrderList Orders="{Binding Orders}" />
+                <controls:ProductList Products="{Binding Products}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

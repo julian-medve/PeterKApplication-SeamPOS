@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.LoadingPage" NavigationPage.HasNavigationBar="False" Padding="0">
+    <ContentPage.Content>
+        <Image Source="splash.png" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0"/>
+    </ContentPage.Content>
+</ContentPage>

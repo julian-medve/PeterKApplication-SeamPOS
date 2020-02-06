@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabAnalyticsPages.OwnerBusinessTabAnalyticsReportsPage"
+             Title="Analytics Reports">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Analytics Reports"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <controls:HeaderText Text="SALES BY" IsLeftAligned="True" IsBold="True" HasBackground="True" />
+                    <controls:FormDropDown />
+                    <controls:HeaderText Text="PERIOD" IsLeftAligned="True" IsBold="True" HasBackground="True" />
+                    
+                    <!--<StackLayout Orientation="Horizontal">
+                        <controls:FormDropDown />
+                        <controls:FormDropDown />
+                    </StackLayout>-->
+                    
+                    <controls:OverviewData />
+                    <controls:AppButton Text="SHARE / EXPORT" IsOutline="True" IsPrimary="True" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

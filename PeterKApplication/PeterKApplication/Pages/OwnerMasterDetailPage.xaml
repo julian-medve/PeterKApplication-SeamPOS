@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ownerTabbedPages="clr-namespace:PeterKApplication.Pages.OwnerTabbedPages;assembly=PeterKApplication"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:pages="clr-namespace:PeterKApplication.Pages;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerMasterDetailPage">
+    <MasterDetailPage.Master>
+        <pages:MasterSidebarPage/>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ownerTabbedPages:OwnerTabbedPage Title="Detail"/>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

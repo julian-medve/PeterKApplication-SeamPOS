@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" x:Name="This"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PeterKApplication.Controls.HeaderText">
+    <ContentView.Content>
+        <Grid BindingContext="{x:Reference This}" x:Name="GridElement">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1" />
+                <RowDefinition x:Name="TextRow" />
+                <RowDefinition Height="1" />
+            </Grid.RowDefinitions>
+            <BoxView Grid.Row="0" x:Name="TopLine" />
+            <Label Grid.Row="1" VerticalOptions="Center" x:Name="TextElement" Text="{Binding Text}" Padding="0"
+                   Margin="0" TextColor="Black" />
+            <Label Grid.Row="1" VerticalOptions="Center" x:Name="RightTextElement" Text="{Binding RightSideText}"
+                   Padding="0" Margin="0,0,20,0" TextColor="Black" HorizontalOptions="End"
+                   IsVisible="{Binding RightSideText, Converter={StaticResource IsTruthy}}" />
+            <BoxView Grid.Row="2" x:Name="BottomLine" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

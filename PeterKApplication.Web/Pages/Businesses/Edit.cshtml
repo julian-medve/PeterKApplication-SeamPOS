@@ -1,0 +1,78 @@
+﻿@page "{id:Guid}"
+@model PeterKApplication.Web.Pages.Businesses.Edit
+
+<style>
+th {
+    text-align: left;
+    vertical-align: middle;
+}
+td {
+    text-align: left;
+    vertical-align: middle;
+}
+</style>
+
+
+@{
+    ViewData["Title"] = Model.Business.Name;
+}
+
+<h1>@Html.DisplayFor(model => model.Business.Name)</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Business Name</th>
+        <th>Owners Document</th>
+        <th>Business Document</th>
+        <th>Is Verified</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form method="post">
+            <input type="hidden" asp-for="Business.Id" />
+            <td>
+                @Html.DisplayFor(model => model.Business.Name)
+            </td>
+            
+            @if (Model.Business.OwnersDocumentImage != null)
+            {
+                <td>
+                    @if(Model.Business?.OwnersDocumentImage?.ImageData is byte[] bytes){
+                        var ownersBase64 = Convert.ToBase64String(bytes);
+                        var ownersImgSrc = String.Format("data:image/gif;base64,{0}", ownersBase64);
+                        <a href="/api/Images/@Model.Business.OwnersDocumentImage.Id">Owners Document</a>
+                    }
+                </td>
+            }
+            else
+            {
+                <td>No document</td>
+            }
+            
+            @if (Model.Business.BusinessDocumentImage != null)
+            {
+                <td>
+                    @if(Model.Business?.BusinessDocumentImage?.ImageData is byte[] bytes){
+                        var businessesBase64 = Convert.ToBase64String(bytes);
+                        var businessesImgSrc = String.Format("data:image/gif;base64,{0}", businessesBase64);
+                    }
+                    <a href="/api/Images/@Model.Business.BusinessDocumentImage.Id">Business Document</a>
+                </td>
+            }
+            else
+            {
+                <td>No document</td>
+            }
+            
+            <td>
+                <input asp-for="Business.IsVerified" class="form-control" style="horiz-align: center"/>
+            </td>
+            <td>
+                <input type="submit" value="Save" class="btn btn-primary"/>
+            </td>
+        </form>
+    </tr>
+    </tbody>
+</table>

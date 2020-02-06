@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabLocationsPages.OwnerBusinessTabLocationEditPage"
+             Title="Edit Profile"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabLocationEditPageViewModel.Self}"
+             x:Name="This">
+        
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Edit Location"
+                HasBackButton="True" />
+
+            <ScrollView>
+                <StackLayout>
+
+                    <Label Text="{Binding PageTitle}"
+                           FontSize="24"
+                           Margin="0, 10, 0, 0"
+                           HorizontalOptions="CenterAndExpand"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <controls:InputWithBorder Placeholder="Business Location" Padding="35,0" Text="{Binding LocationMember.Name}"/>
+                    
+                    <StackLayout Margin="20" Orientation="Vertical">
+                        <controls:AppButton Text="Save" IsPrimary="True" IsBig="True" OnClicked="SaveClicked" />
+                     
+                        <!--controls:AppButton Text="Delete Account" IsPrimary="True" IsBig="True" IsOutline="True"
+                                            OnClicked="DeleteClicked" x:Name="DeleteButton" />
+                        <controls:AppButton Text="Disable Account" IsPrimary="False" IsBig="True" IsOutline="True"
+                                            OnClicked="DisableClicked" x:Name="Disablebutton" /-->
+                        
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

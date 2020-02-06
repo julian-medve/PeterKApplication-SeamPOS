@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSupportPages.OwnerBusinessTabSupportMessageSupport"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Name="This"
+             Title="Message Support">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <controls:NavigationBar
+                Text="Message Support"
+                HasBackButton="True" />
+            <ScrollView BindingContext="{x:Reference This}">
+                <StackLayout Orientation="Vertical">
+                    <controls:InputWithBorder Placeholder="SUBJECT" Padding="25,0" Text="{Binding SupportDto.Subject}"/>
+                    <controls:ErrorLabel Error="{Binding SupportDtoResponse.Error}" Parameter="Subject"/>
+                    <controls:InputWithBorder Placeholder="MESSAGE" Padding="25,0" HeightRequest="100" Text="{Binding SupportDto.Message}"/>
+                    <controls:ErrorLabel Error="{Binding SupportDtoResponse.Error}" Parameter="Message"/>
+                    <controls:ErrorLabel Error="{Binding SupportDtoResponse.Error}" AnyError="True"/>
+                    <controls:AppButton IsPrimary="True" Text="SEND" IsBig="True" Padding="25,0" OnClicked="AppButton_OnOnClicked"/>
+                    <Label Text="PLEASE ENSURE YOU HAVE ACCESS TO" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="THE EMAIL YOU SET IN ACCOUNT TO" FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="CORRESPOND." FontAttributes="Bold" HorizontalOptions="Center" />
+                    <Label Text="Terms of Service." TextColor="{StaticResource MainBlueColor}"
+                           HorizontalOptions="Center" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSupportPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="Support">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Support"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <controls:HorizontalButton Image="i_info_icon_blue.png" Text="Knowledge Base"
+                                               OnClicked="GoToKnowledgeBase" />
+                    <controls:HorizontalButton Image="set9.png" Text="Message Customer Care"
+                                               OnClicked="GoToMessageCustomerCare" />
+                    <controls:HorizontalButton Image="Order.png" Text="Plans" OnClicked="GoToPlans" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

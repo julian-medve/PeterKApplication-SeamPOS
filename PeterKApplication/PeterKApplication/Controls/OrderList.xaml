@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeterKApplication.Controls.OrderList"
+             x:Name="This">
+    <ContentView.Content>
+        <ListView ItemsSource="{Binding Orders}" HasUnevenRows="True" BindingContext="{x:Reference This}" SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid HorizontalOptions="FillAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="55" />
+                                <RowDefinition Height="150" />
+                            </Grid.RowDefinitions>
+                            <!-- grid for order number and details -->
+                            <Grid Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+                                  HorizontalOptions="FillAndExpand"
+                                  BackgroundColor="#f8f8f8" HeightRequest="30" Margin="0" Padding="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="1" />
+                                </Grid.RowDefinitions>
+                                <BoxView
+
+                                    HorizontalOptions="FillAndExpand"
+                                    Grid.Row="0"
+                                    Margin="0"
+                                    WidthRequest="2"
+                                    BackgroundColor="#e0e0e0" />
+                                <StackLayout
+                                    Orientation="Horizontal"
+                                    Grid.Row="1"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    Padding="20,0">
+                                    <Label
+                                        HorizontalOptions="StartAndExpand"
+                                        TextColor="#232323"
+                                        FontAttributes="Bold"
+                                        Text="{Binding OrderNumber, StringFormat='ORDER #{0}'}" />
+                                    <Label
+                                        HorizontalOptions="End"
+                                        TextColor="{StaticResource MainBlueColor}"
+                                        FontAttributes="Bold"
+                                        Text="Details">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DetailsTapped, Source={x:Reference This}}" CommandParameter="{Binding .}"/>
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                </StackLayout>
+                                <BoxView
+                                    Grid.Row="2"
+                                    Margin="0"
+                                    WidthRequest="2"
+                                    BackgroundColor="#e0e0e0" />
+                            </Grid>
+                            
+                            <StackLayout Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="20,0,0,0"
+                                         Orientation="Vertical">
+                                <Grid VerticalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Status" />
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" HeightRequest="15"
+                                               WidthRequest="15" />
+                                        <Label Text="{Binding StatusText}" />
+                                    </StackLayout>
+                                </Grid>
+
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                                <Grid VerticalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Date" />
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                        <Label Text="{Binding CreatedOn}" />
+                                    </StackLayout>
+                                </Grid>
+                                
+                                <BoxView HeightRequest="1" BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+
+                                <Grid VerticalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Order Amount" />
+                                    
+                                    <StackLayout Grid.Column="1" Orientation="Horizontal">
+                                        <!--Label Text="{Binding Amount, StringFormat='{0:c}'}" /-->
+                                        <Label Text="{Binding AmountLabel}" />
+                                    </StackLayout>
+                                </Grid>
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentView.Content>
+</ContentView>

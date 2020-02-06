@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:NavigationBar LeftImage="Menu.png" CenterImage="logo.png"
+                                    LeftImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}" />
+            
+            <ScrollView>
+                <StackLayout>
+                    <controls:HorizontalButton Image="Sync_Refresh.png" Text="Sync (Update Offline)" OnClicked="GoToSync"/>
+                    <controls:HorizontalButton Image="Cash_Blue.png" Text="Payments" OnClicked="GoToPayments"/>
+                    <controls:HorizontalButton Image="Staff_Blue.png" Text="Manage Staff" OnClicked="GoToStaff"/>
+                    <controls:HorizontalButton Image="set4.png" Text="Analytics" OnClicked="GoToAnalytics"/>
+                    <controls:HorizontalButton Image="set7.png" Text="Locations" OnClicked="GotoLocations"/>
+
+                    <controls:HorizontalButton Image="set8.png" Text="Settings" OnClicked="GoToSettings"/>
+                    <controls:HorizontalButton Image="set9.png" Text="Support" OnClicked="GoToSupport"/>
+                    
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

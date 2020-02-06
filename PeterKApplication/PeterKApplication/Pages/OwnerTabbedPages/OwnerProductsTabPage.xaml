@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerProductsTabPageViewModel.Self}"
+             x:Name="This"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerProductsTabPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="PRODUCTS"
+                RightImage="Menu.png"
+                RightImageTapped="NavigationBar_OnRightImageTapped" />
+
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical" Grid.Column="0" HorizontalOptions="FillAndExpand"
+                             VerticalOptions="FillAndExpand">
+                    <controls:AppSearchBar Placeholder="Search products" Text="{Binding Search}" Margin="20,0" />
+                    <controls:TabControl HasUnderline="False" HorizontalOptions="FillAndExpand"
+                                         Tabs="{Binding Tabs, Source={x:Reference This}}"
+                                         TabChanged="TabControl_OnTabChanged" />
+                    
+                    <controls:ProductList Products="{Binding FilteredProducts}" ItemSelected="ProductItemTapped"
+                                          DefaultImage="Cart_Icon.png" 
+                                          SelectedImage="CartIconSelected.png" 
+                                          AddOneClicked="Tab1_AddOneClicked"
+                                          DeleteAllClicked="Tab1_DeleteAllClicked"/>
+                    
+                    <StackLayout IsVisible="{Binding IsAddProductMode}">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand"
+                                     IsVisible="{Binding HasAnyCategory}">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="Add.png" HorizontalOptions="Center" HeightRequest="50" WidthRequest="50" />
+                            <Label Text="Add product" HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand"
+                                     IsVisible="{Binding HasAnyCategory, Converter={StaticResource Not}}">
+                            <Label TextColor="{StaticResource MainRedColor}" HorizontalOptions="Center"
+                                   Text="To add products add at least one product category using top right menu."
+                                   LineBreakMode="WordWrap" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                    <!--controls:CheckoutHoverMenu Text="{Binding Total, StringFormat='SUB TOTAL: {0}'}"
+                                                Number="{Binding SelectedItems.Count}"
+                                                IsVisible="{Binding HasSelectedItems}"
+                                                Clicked="CheckoutHoverMenu_OnClicked" /-->
+                </StackLayout>
+
+                <StackLayout WidthRequest="125"
+                             Margin="0,0,0,0"
+                             Grid.Column="0"
+                             HorizontalOptions="End"
+                             Padding="0"
+                             IsVisible="{Binding ShowDropdownMenu, Source={x:Reference This}}">
+                    <StackLayout BackgroundColor="{StaticResource LightBlueColor}" Orientation="Vertical">
+                        <Frame HasShadow="False" BackgroundColor="{StaticResource LightBlueColor}" WidthRequest="50"
+                               HeightRequest="90" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped1" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" Margin="0" Padding="10">
+                                <Image Source="Add.png" WidthRequest="40" HeightRequest="40" HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                <Label Text="ADD PRODUCT CATEGORY" LineBreakMode="WordWrap" HorizontalOptions="Center"
+                                       FontSize="12"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0" />
+                        <Frame HasShadow="False" BackgroundColor="{StaticResource LightBlueColor}" WidthRequest="50"
+                               HeightRequest="90" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped2" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" Margin="0" Padding="10">
+                                <Image Source="Cart_Icon.png" WidthRequest="40" HeightRequest="40"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="CART MODE" LineBreakMode="WordWrap" HorizontalOptions="Center"
+                                       FontSize="12"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0" />
+                        <Frame HasShadow="False" BackgroundColor="{StaticResource LightBlueColor}" WidthRequest="50"
+                               HeightRequest="90" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped3" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" Margin="0" Padding="10">
+                                <Image Source="Share_Blue.png" WidthRequest="40" HeightRequest="40"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                                <Label Text="SHARE MODE" LineBreakMode="WordWrap" HorizontalOptions="Center"
+                                       FontSize="12"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                        <BoxView HeightRequest="1" BackgroundColor="Black" Margin="0" />
+                        <Frame HasShadow="False" BackgroundColor="{StaticResource LightBlueColor}" WidthRequest="50"
+                               HeightRequest="90" Margin="0" Padding="0" VerticalOptions="Center">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped4" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand"
+                                         VerticalOptions="FillAndExpand" Margin="0" Padding="10">
+                                <Image Source="redcart.png" WidthRequest="40" HeightRequest="40"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                                <Label Text="OFFERS" LineBreakMode="WordWrap" HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSize="12"
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

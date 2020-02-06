@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSettingsPages.OwnerBusinessTabSettingsBusinessCurrencyPage"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabSettingsBusinessCurrencyPageViewModel.Self}">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Currency &amp; Tax"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+
+                    <!--Label Text="Currency" VerticalOptions="Start" HorizontalOptions="Start" Margin="20,10,20,0" WidthRequest="65" LineBreakMode="WordWrap"/-->
+                    <!--controls:InputWithBorder Placeholder="Currency $" Text="{Binding Currency}" Margin="20,10,20,0"/-->
+                    <!--controls:FormDropDown Options="{Binding CurrencyOptions}"  SelectedOption="{Binding SelectedCurrencyOption}" HorizontalOptions="FillAndExpand"  Margin="20,10,20,0"/-->
+
+                    <StackLayout Orientation="Horizontal"  Margin="20,10,20,0">
+                        <Label Text="Currency" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                        <controls:FormDropDown Options="{Binding CurrencyOptions}"  SelectedOption="{Binding SelectedCurrencyOption}" HorizontalOptions="FillAndExpand"  Margin="20,0,0,0"/>
+                    </StackLayout>
+                    
+                    
+                    <Label Text="Tax (%)" VerticalOptions="Start" HorizontalOptions="Start" Margin="20,10,20,0" WidthRequest="65" LineBreakMode="WordWrap"/>
+                    <controls:InputWithBorder Placeholder="Tax" Text="{Binding Tax}" Margin="20,10,20,0"/>
+                    
+                    <StackLayout Orientation="Vertical" Padding="20,0">
+                        <controls:AppButton IsPrimary="True" Text="EDIT" IsBig="True" />
+                        <controls:AppButton IsPrimary="True" Text="SAVE" IsBig="True" IsOutline="True"
+                                            OnClicked="SaveClicked" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

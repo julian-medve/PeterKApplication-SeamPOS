@@ -1,0 +1,67 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.EntityFrameworkCore
+@using PeterKApplication.Shared.Data
+@model PeterKApplication.Web.Pages.DocumentVerification
+@inject AppDbContext AppDbContext;
+
+<h1>Document Verification</h1>
+<br/>
+<h4>Businesses</h4>
+
+<table width="100%">
+    <thead>
+    <tr>
+        <th>Business Name</th>
+        <th>Is Verified</th>
+    </tr>
+    </thead>
+    @foreach (var b in Model.Businesses)
+    {
+        <form method="post" action="">
+            <input hidden type="text" value="@b.Id" name="id"/>
+            <input hidden type="checkbox" value="@b.IsVerified" name="isBusinessVerified"/>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => b.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => b.IsVerified)
+                    <!-- <input type="checkbox" asp-for="@b.IsVerified" name="isVerified"/> -->
+                </td>
+                @if (b.OwnersDocumentImage != null)
+                {
+                    <td>
+                        @if(b?.OwnersDocumentImage?.ImageData is byte[] bytes){
+                            var ownersBase64 = Convert.ToBase64String(bytes);
+                            var ownersImgSrc = String.Format("data:image/gif;base64,{0}", ownersBase64);
+                            <a href="/api/Images/@b.OwnersDocumentImage.Id">Owners Document</a>
+                        }
+                    </td>
+                }
+                else
+                {
+                    <td>No image</td>
+                }
+
+                @if (b.BusinessDocumentImage != null)
+                {
+                    <td>
+                        @if(b?.BusinessDocumentImage?.ImageData is byte[] bytes){
+                            var businessesBase64 = Convert.ToBase64String(bytes);
+                            var businessesImgSrc = String.Format("data:image/gif;base64,{0}", businessesBase64);
+                        }
+                        <a href="/api/Images/@b.BusinessDocumentImage.Id">Business Document</a>
+                    </td>
+                }
+                else
+                {
+                    <td>No image</td>
+                }
+                <td>
+                    <input type="submit" value="@(b.IsVerified ? "Unverify" : "Verify")"/>
+                </td>
+            </tr>
+        </form>
+    }
+</table>

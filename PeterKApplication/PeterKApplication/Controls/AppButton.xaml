@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" x:Name="This"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PeterKApplication.Controls.AppButton">
+    <ContentView.Content>
+        <Grid BindingContext="{x:Reference This}" x:Name="Grid">
+            <BoxView x:Name="BackgroundElement" HorizontalOptions="FillAndExpand" IsVisible="{Binding IsOutline, Converter={StaticResource Not}}"/>
+            <Frame x:Name="OutlineOverlay" HasShadow="False" BackgroundColor="White" IsVisible="{Binding IsOutline}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <Label Text="{Binding Text, Mode=TwoWay}" HorizontalOptions="CenterAndExpand" x:Name="TextElement" VerticalOptions="Center"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

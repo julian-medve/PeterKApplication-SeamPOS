@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerOrdersTabPages.OwnerOrdersTabOrderDetailsPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerOrdersTabOrderDetailsPageViewModel.Self}" Title="Order details">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Order Details"
+                RightImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}" />
+
+            <ScrollView>
+
+                <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+
+                    <controls:OrderDetailProductList Products="{Binding Order.OrderProductItems}" HeightRequest="{Binding Order.OrderProductsHeight}"/>
+
+                    <controls:OrderDetails Order="{Binding Order}"/>
+
+                    <StackLayout Orientation="Horizontal">
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" WidthRequest="150">
+
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.CreatedOn, StringFormat='{0:d MMMM}'}"  TextColor="Gray"/>
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.CreatedOn, StringFormat='on {0:HH:mm}'}" TextColor="Gray"/>
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.OrderedOn, StringFormat='{0:d MMMM}'}" TextColor="Gray"/>
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.OrderedOn, StringFormat='on {0:HH:mm}'}" TextColor="Gray"/>
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.ShippedOn, StringFormat='{0:d MMMM}'}" TextColor="Gray"/>
+                            <Label HorizontalOptions="End" VerticalOptions="Center" Text="{Binding Order.ShippedOn, StringFormat='on {0:HH:mm}'}" TextColor="Gray"/>
+
+                        </StackLayout>
+
+                        <controls:VerticalConnectedProgressRings Steps="{Binding OrderSteps}" HorizontalOptions="Center" WidthRequest="100"/>
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="End" WidthRequest="150">
+
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="Order Prepared By"/>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding StaffName}"  TextColor="Gray"/>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="Status" />
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding Order.OrderStatus}"  TextColor="Gray"/>
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="Location" />
+                            <Label HorizontalOptions="StartAndExpand" VerticalOptions="Start" Text="{Binding Order.DeliveryAddress}" TextColor="Gray"/>
+
+                        </StackLayout>
+
+                        <!--StackLayout Orientation="Horizontal" Margin="20">
+                        <controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="Support" OnClicked="AppButton_SupportClicked" HorizontalOptions="FillAndExpand"/>
+                        <controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="FAQ's" OnClicked="AppButton_FaqClicked" HorizontalOptions="FillAndExpand"/-->
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" x:Name="This"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="PeterKApplication.Controls.ChoiceRings">
+    <ContentView.Content>
+        <ListView BindingContext="{x:Reference This}" ItemsSource="{Binding Items}" SelectionMode="None"
+                  HasUnevenRows="True" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Grid HeightRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  WidthRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  HorizontalOptions="StartAndExpand">
+                                  <!-- IsVisible="{Binding Item1, Converter={StaticResource IsTruthy}}"> -->
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ItemTapped, Source={x:Reference This}}"
+                                                          CommandParameter="{Binding Item1}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding WiderHeight, Source={x:Reference This}}" />
+                                    <ColumnDefinition Width="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                    <RowDefinition Height="{Binding WiderHeight, Source={x:Reference This}}" />
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Item1.Selected, Converter={StaticResource IfIsTruthy}, ConverterParameter='EllipseSelect.png'}" Grid.Column="1" Grid.Row="0" HeightRequest="20"
+                                       WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"
+                                       IsVisible="{Binding Item1.Selected}" />
+                                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"
+                                      WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                      HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}">
+                                    <Image Source="{Binding Item1.Image}" HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}" />
+                                    <Label Text="{Binding Item1.Text}" HorizontalOptions="Center"
+                                           VerticalOptions="Center" FontSize="10" LineBreakMode="WordWrap"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HorizontalTextAlignment="Center" />
+                                </Grid>
+                            </Grid>
+
+                            <Grid HeightRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  WidthRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  HorizontalOptions="CenterAndExpand">
+                                  <!-- IsVisible="{Binding Item2, Converter={StaticResource IsTruthy}}"> -->
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ItemTapped, Source={x:Reference This}}"
+                                                          CommandParameter="{Binding Item2}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding WiderHeight, Source={x:Reference This}}" />
+                                    <ColumnDefinition Width="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                    <RowDefinition Height="{Binding WiderHeight, Source={x:Reference This}}" />
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Item2.Selected, Converter={StaticResource IfIsTruthy}, ConverterParameter='EllipseSelect.png'}" Grid.Column="1" Grid.Row="0" HeightRequest="20"
+                                       WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"
+                                       IsVisible="{Binding Item2.Selected}" />
+                                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"
+                                      WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                      HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}">
+                                    <Image Source="{Binding Item2.Image}" HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}" />
+                                    <Label Text="{Binding Item2.Text}" HorizontalOptions="Center"
+                                           VerticalOptions="Center" FontSize="10" LineBreakMode="WordWrap"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HorizontalTextAlignment="Center" />
+                                </Grid>
+                            </Grid>
+
+                            <Grid HeightRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  WidthRequest="{Binding FullHeight, Source={x:Reference This}}"
+                                  HorizontalOptions="EndAndExpand">
+                                  <!-- IsVisible="{Binding Item3, Converter={StaticResource IsTruthy}}"> -->
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ItemTapped, Source={x:Reference This}}"
+                                                          CommandParameter="{Binding Item3}" />
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding WiderHeight, Source={x:Reference This}}" />
+                                    <ColumnDefinition Width="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="{Binding SmallerHeight, Source={x:Reference This}}" />
+                                    <RowDefinition Height="{Binding WiderHeight, Source={x:Reference This}}" />
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding Item3.Selected, Converter={StaticResource IfIsTruthy}, ConverterParameter='EllipseSelect.png'}" Grid.Column="1" Grid.Row="0" HeightRequest="20"
+                                       WidthRequest="20" HorizontalOptions="Center" VerticalOptions="Center"
+                                       IsVisible="{Binding Item3.Selected}" />
+                                <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"
+                                      WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                      HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}">
+                                    <Image Source="{Binding Item3.Image}" HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HeightRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}" />
+                                    <Label Text="{Binding Item3.Text}" HorizontalOptions="Center"
+                                           VerticalOptions="Center" FontSize="10" LineBreakMode="WordWrap"
+                                           WidthRequest="{Binding ABitSmallerHeight, Source={x:Reference This}}"
+                                           HorizontalTextAlignment="Center" />
+                                </Grid>
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentView.Content>
+</ContentView>

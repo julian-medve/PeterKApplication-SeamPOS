@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSyncPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabSyncPageViewModel.Self}"
+             Title="Sync">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Sync"
+                HasBackButton="True" />
+
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <controls:HeaderText Text="SYNC MANAGEMENT" HasBackground="True" IsLeftAligned="True" IsBold="True" />
+                    <StackLayout Orientation="Horizontal" Margin="0,-10,0,0" Padding="0" HeightRequest="30">
+                        <Label Text="AUTO Sync" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                               Margin="20,0,0,0" Padding="0" />
+                        <Switch HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="0"
+                                IsToggled="{Binding AutoSyncEnabled}" />
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="{StaticResource LightDarkGrayColor}" Margin="0" HeightRequest="1" />
+
+                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0" HeightRequest="30">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="StartManualSync" />
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Sync" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                               Margin="20,0,0,0" Padding="0" />
+                        <Image HeightRequest="25" WidthRequest="25" HorizontalOptions="End" VerticalOptions="Center"
+                               Source="Sync_Refresh.png" Margin="0,0,15,0" />
+                    </StackLayout>
+
+                    <BoxView BackgroundColor="{StaticResource LightDarkGrayColor}" Margin="0" HeightRequest="1" />
+
+                    <Label Text="SYNC UPDATES BUSINESS OWNERS" HorizontalOptions="CenterAndExpand" />
+                    <Label Text="ON SALES." HorizontalOptions="CenterAndExpand" />
+                    <Label Text="UPDATES DEVICES USING YOUR" HorizontalOptions="CenterAndExpand" />
+                    <Label Text="BUSINESS PROFILE PRODUCTS /" HorizontalOptions="CenterAndExpand" />
+                    <Label Text="OFFERS / COUPONS ..ETC" HorizontalOptions="CenterAndExpand" />
+
+                    <controls:HeaderText Text="{Binding AutoSyncEnabledText}" HasBackground="True" IsBold="True" />
+
+                    <!--Label Text="Total Syncs Today" FontAttributes="Bold" HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="5" FontSize="64" HorizontalOptions="End" VerticalOptions="End"
+                               FontAttributes="Bold" TextColor="{StaticResource MainBlueColor}" />
+                        <Label Grid.Column="1" Text="5 MB" FontSize="24" HorizontalOptions="Start"
+                               VerticalOptions="End" FontAttributes="Bold" />
+                    </Grid>
+
+                    <Label Text="Sync Usage" FontAttributes="Bold" HorizontalOptions="Center"
+                           HorizontalTextAlignment="Start" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Text="25" FontSize="64" HorizontalOptions="End" VerticalOptions="End"
+                               FontAttributes="Bold" TextColor="{StaticResource MainBlueColor}" />
+                        <Label Grid.Column="1" Text="8 MB / 25 MB" FontSize="24" HorizontalOptions="Start"
+                               VerticalOptions="End" FontAttributes="Bold" />
+                    </Grid-->
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

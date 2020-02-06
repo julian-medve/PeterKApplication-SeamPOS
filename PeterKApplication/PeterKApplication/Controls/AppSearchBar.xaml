@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Controls.AppSearchBar"
+             x:Name="This">
+    <ContentView.Content>
+        <Frame BorderColor="#e3e3e3"
+               HasShadow="false"
+               Padding="10,0,10,0"
+               CornerRadius="5" BindingContext="{x:Reference This}">
+            <StackLayout Orientation="Horizontal">
+                <Image
+                    WidthRequest="15"
+                    HeightRequest="15"
+                    Margin="0,0,5,0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding RightSideIcon, Converter={StaticResource Not}}"
+                    Source="SearchIcon.png" />
+                <controls:BorderlessEntry
+                    VerticalOptions="Center"
+                    HorizontalOptions="FillAndExpand"
+                    Text="{Binding Text, Mode=TwoWay}" Placeholder="{Binding Placeholder}" />
+                <Image
+                    WidthRequest="15"
+                    HeightRequest="15"
+                    Margin="0,0,5,0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding RightSideIcon}"
+                    Source="SearchIcon.png" />
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,33 @@
+@page "{id:Guid?}"
+@model PeterKApplication.Web.Pages.Agents.Edit
+
+@{
+    ViewData["Title"] = Model.UserData.FirstName + " " + Model.UserData.LastName;
+}
+
+<form method="post">
+    @Html.HiddenFor(model => model.UserData.Id)
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(model => model.UserData.FirstName)
+    @Html.EditorFor(model => model.UserData.FirstName)
+    @Html.ValidationMessageFor(model => model.UserData.FirstName)
+    <br/>
+    @Html.LabelFor(model => model.UserData.LastName)
+    @Html.EditorFor(model => model.UserData.LastName)
+    @Html.ValidationMessageFor(model => model.UserData.LastName)
+    <br/>
+    @Html.LabelFor(model => model.UserData.Email)
+    @Html.EditorFor(model => model.UserData.Email)
+    @Html.ValidationMessageFor(model => model.UserData.Email)
+    <br/>
+    @Html.LabelFor(model => model.UserData.AgentCode)
+    @Html.EditorFor(model => model.UserData.AgentCode)
+    @Html.ValidationMessageFor(model => model.UserData.AgentCode)
+    <br/>
+    @Html.LabelFor(model => model.UserData.Password)
+    @Html.EditorFor(model => model.UserData.Password)
+    @Html.ValidationMessageFor(model => model.UserData.Password)
+    <br/>
+    <button class="btn btn-primary">Save</button>
+</form>

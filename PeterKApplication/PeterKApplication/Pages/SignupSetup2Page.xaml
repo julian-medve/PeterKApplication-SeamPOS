@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.SignupSetup2Page">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <controls:Logo />
+                <controls:HeaderText IsBig="True" Text="Setting Up #2" />
+                <Label Text="SET THE DEVICE'S DEFAULT ROLE" HorizontalOptions="Center" />
+                <Label Text="SELECT: OWNER FOR OVERSIGHT." HorizontalOptions="Center" />
+                <Label Text="DPS: FOR STAFF." HorizontalOptions="Center" />
+                <Image Source="ImaePlacement.png" HeightRequest="30" Margin="100" HorizontalOptions="CenterAndExpand" />
+                <controls:CarouselDots/>
+                <controls:HeaderText Text="Setup The Device's Default Role" />
+                <controls:HorizontalButton Image="icon9.png" Text="OWNER" OnClicked="OnOwnerRolePicked" />
+                <controls:HorizontalButton Image="icon9.png" Text="DESIGNATED POINT OF SALE (DPS)"
+                                           OnClicked="OnDpsRolePicked" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

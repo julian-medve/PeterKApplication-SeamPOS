@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabPaymentsPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="Payments">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="PAYMENT OPTIONS"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <controls:HeaderText Text="PAYMENT OPTIONS SETUP" IsBold="True" HasBackground="True" />
+                    <controls:HorizontalButton Image="Cash_Blue.png" Text="CASH" IsBold="True" RemoveChevron="True" />
+                    <controls:HorizontalButton Image="mpesa.png" Text="M-PESA" IsBold="True" />
+                    <!--<controls:HorizontalButton Image="mVisa3.png" Text="mVISA" IsBold="True" />-->
+                    <controls:HorizontalButton Image="Cheque.png" Text="CHEQUE" IsBold="True" RemoveChevron="True" />
+                    <controls:HorizontalButton Image="Bank.png" Text="BANK TRANSFER" IsBold="True" RemoveChevron="True" />
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

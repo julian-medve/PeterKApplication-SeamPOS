@@ -1,0 +1,23 @@
+@page
+@model PeterKApplication.Web.Pages.Statistics.Index
+
+@{
+    ViewData["Title"] = "Statistics";
+}
+
+<h1>Statistics</h1>
+
+<form>
+    <p>
+        <select asp-for="SelectedPeriod" asp-items="Model.Periods" onchange="this.form.submit()"></select>
+    </p>
+</form>
+
+<h4>Total transactions:</h4>
+<h3>KES @Html.DisplayFor(m => m.TotalTransactions)</h3>
+
+<h5>Highest:</h5>
+<h4>KES @Html.DisplayFor(m => m.HighestTransaction)</h4>
+
+<h5>Lowest:</h5>
+<h4>KES @Html.DisplayFor(m => m.LowestTransaction)</h4>

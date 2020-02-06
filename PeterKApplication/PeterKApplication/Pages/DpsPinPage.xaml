@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             x:Name="This"
+             BindingContext="{x:Static viewModels:DpsPinPageViewModel.Self}"
+             x:Class="PeterKApplication.Pages.DpsPinPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <controls:Logo/>
+                <controls:HeaderText Text="Enter PIN" HasBackground="False" IsBig="True" />
+                <controls:ErrorLabel Error="{Binding AuthStaffResponse.Error}" HorizontalOptions="Center"/>
+                <controls:ErrorLabel Error="{Binding AuthStaffResponse.Error}" HorizontalOptions="Center" AnyError="True"/>
+                <Label Text="ENTER PIN TO GAIN ACCESS" HorizontalOptions="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="20">
+                    <controls:ProgressRings Rings="4" Progress="{Binding Pin.Length}" />
+                    <Image Source="backspace_icon.png" IsVisible="{Binding Pin, Converter={StaticResource IsTruthy}}"
+                           HeightRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <controls:DialKeyboard OnKeyPressed="DialKeyboard_OnKeyPressed"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

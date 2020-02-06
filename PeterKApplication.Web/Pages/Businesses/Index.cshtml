@@ -1,0 +1,33 @@
+﻿@page
+@model PeterKApplication.Web.Pages.Businesses.Index
+
+@{
+    ViewData["Title"] = "Businesses";
+}
+
+<h1>Businesses</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Business Name</th>
+        <th>Is Verified</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model.Businesses)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(_ => b.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(_ => b.IsVerified)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@b.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

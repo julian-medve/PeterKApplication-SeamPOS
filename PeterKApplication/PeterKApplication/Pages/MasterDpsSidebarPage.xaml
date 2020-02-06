@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.MasterDpsSidebarPage"
+             Title="Master">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="{StaticResource MainBlueColor}">
+            <Label Text="SeamPOS" FontSize="24" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"
+                   Margin="10" />
+            <controls:HorizontalButton Text="DPS Mode" Image="staffmenu.png" RemoveChevron="True" TextColor="White"
+                                       IsSmall="True" OnClicked="DpsModeClicked" />
+            <controls:HorizontalButton Text="Owner Dashboard" Image="dashboardmenu.png" RemoveChevron="True" TextColor="White"
+                                       IsSmall="True" OnClicked="OwnerModeClicked" />
+            <controls:HorizontalButton Text="Logout" Image="logout_white_icon.png" RemoveChevron="True"
+                                       TextColor="White" IsSmall="True" OnClicked="LogoutClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

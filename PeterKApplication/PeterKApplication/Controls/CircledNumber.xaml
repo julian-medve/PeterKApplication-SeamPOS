@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeterKApplication.Controls.CircledNumber" x:Name="This">
+    <ContentView.Content>
+        <Grid BindingContext="{x:Reference This}" MinimumHeightRequest="40" MinimumWidthRequest="40" WidthRequest="40"
+              HeightRequest="40" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+            </Grid.GestureRecognizers>
+            <BoxView Grid.Column="0" MinimumHeightRequest="40" MinimumWidthRequest="40" HeightRequest="40"
+                     WidthRequest="40" CornerRadius="20" x:Name="BackgroundElement" />
+            <Label HorizontalOptions="Center" VerticalOptions="Center" Text="{Binding Text}" TextColor="White"
+                   FontAttributes="Bold" FontSize="20" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

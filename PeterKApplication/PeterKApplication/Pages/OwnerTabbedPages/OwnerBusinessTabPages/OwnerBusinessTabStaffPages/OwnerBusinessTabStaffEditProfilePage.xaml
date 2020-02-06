@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabStaffPages.OwnerBusinessTabStaffEditProfilePage"
+             Title="Edit Profile"
+             BindingContext="{x:Static viewModels:OwnerBusinessTabStaffEditProfilePageViewModel.Self}"
+             x:Name="This">
+    <ContentPage.Content>
+        <StackLayout>
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Edit Profile"
+                HasBackButton="True" />
+            <ScrollView>
+                <StackLayout>
+                    <controls:CenterImageOrCirclePlus Image="{Binding StaffMember.Image}"
+                                                      ImageChanged="CenterImageOrCirclePlus_OnImageChanged" />
+                    <controls:FormInput Label="Name" Text="{Binding StaffFullName}" />
+
+                    <StackLayout Orientation="Horizontal" Padding="10, 0">
+                        <Label Text="Location" VerticalOptions="Center" HorizontalOptions="Start"></Label>
+                        <controls:FormDropDown Options="{Binding LocationOptions}"  SelectedOption="{Binding SelectedLocationOption}" HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
+                    
+                    <controls:FormInput Label="E-mail" Text="{Binding StaffMember.Email}" />
+                    <controls:FormInput Label="Phone" ShowChangeButton="{Binding IsEdit}"
+                                        Text="{Binding StaffMember.PhoneNumber}" />
+                    <controls:FormInput Label="PIN" ShowChangeButton="{Binding IsEdit}"
+                                        Text="{Binding StaffMember.Pin}" />
+
+                    <StackLayout Margin="20" Orientation="Vertical">
+                        <controls:AppButton Text="Save" IsPrimary="True" IsBig="True" OnClicked="SaveClicked" />
+                        <controls:AppButton Text="Delete Account" IsPrimary="True" IsBig="True" IsOutline="True"
+                                            OnClicked="DeleteClicked" x:Name="DeleteButton" />
+                        <controls:AppButton Text="Disable Account" IsPrimary="False" IsBig="True" IsOutline="True"
+                                            OnClicked="DisableClicked" x:Name="Disablebutton" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

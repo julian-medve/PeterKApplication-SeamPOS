@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:PeterKApplication.Converters;assembly=PeterKApplication"
+             x:Class="PeterKApplication.App" NavigationPage.HasNavigationBar="False">
+    <Application.Resources>
+        <!-- Theme colors -->
+        <Color x:Key="MainBlueColor">#1f4ba5</Color>
+        <Color x:Key="LightBlueColor">#EFEBF5</Color>
+
+        <Color x:Key="MainRedColor">#80231f</Color>
+        
+        <!-- Additional colors -->
+        <Color x:Key="DarkGrayColor">#333333</Color>
+        <Color x:Key="GrayColor">#666666</Color>
+        <Color x:Key="MediumGrayColor">#e3e3e3</Color>
+        <Color x:Key="LightGrayColor">#F9F9FA</Color>
+        <Color x:Key="LightDarkGrayColor">#F1F2F2</Color>
+        <Color x:Key="Green">#9EC555</Color>
+        <Color x:Key="HeaderTopAndBottom">#818283</Color>
+        <Color x:Key="HeaderBackground">#f4f4f4</Color>
+        <Color x:Key="InputBorderColor">#e3e3e3</Color>
+        <Color x:Key="CheckoutMenuMainBlue">#CED3E8</Color>
+        <Color x:Key="CheckoutMenuMainRed">#CED3E8</Color>
+        
+        <converters:IsTruthyConverter x:Key="IsTruthy"/>
+        <converters:NotConverter x:Key="Not"/>
+        <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSource"/>
+        <converters:IsNotTruthyConverter x:Key="IsNotTruthy"/>
+        <converters:IfIsTruthyConverter x:Key="IfIsTruthy"/>
+        <converters:ByteArrayToImageSourceWithDefaultConverter x:Key="ByteArrayToImageSourceWithDefault" />
+        <converters:MenuFitWidthConverter x:Key="MenuFitWidthConverter" />
+        <converters:ToVideoSourceConverter x:Key="ToVideoSource" />
+
+        <Style TargetType="ContentPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+        </Style>
+        
+        <Style TargetType="TabbedPage"
+               ApplyToDerivedTypes="True">
+            <Setter Property="BackgroundColor" Value="#FFFFFF" />
+        </Style>
+        
+        <Style TargetType="NavigationPage">
+            <Setter Property="BarBackgroundColor" Value="White"> </Setter>
+            <Setter Property="BarTextColor" Value="Black"></Setter>
+        </Style>
+        
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+    </Application.Resources>
+</Application>

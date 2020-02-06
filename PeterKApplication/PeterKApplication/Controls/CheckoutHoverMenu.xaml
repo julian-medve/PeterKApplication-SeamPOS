@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             mc:Ignorable="d"
+             x:Name="This"
+             x:Class="PeterKApplication.Controls.CheckoutHoverMenu">
+  <ContentView.Content>
+      <StackLayout Orientation="Horizontal"
+                   x:Name="StackLayout"
+                   BindingContext="{x:Reference This}"
+                   Margin="0"
+                   Padding="5">
+            <Image Source="Menu.png"
+                   WidthRequest="15"
+                   Margin="10, 0, 0, 0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"/>
+
+            <controls:CircledNumber Text="{Binding Number}" IsPrimary="{Binding Primary}"/>
+
+            <Label Text="{Binding Text}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Start"
+                   Margin="25, 0, 0, 0"
+                   TextColor="Black"
+                   FontSize="Small" />
+       </StackLayout>
+  </ContentView.Content>
+</ContentView>

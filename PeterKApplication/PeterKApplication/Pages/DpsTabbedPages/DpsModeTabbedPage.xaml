@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            xmlns:dpstabbedpages="clr-namespace:PeterKApplication.Pages.DpsTabbedPages"
+            xmlns:ownerOrdersTabPages="clr-namespace:PeterKApplication.Pages.OwnerTabbedPages.OwnerOrdersTabPages;assembly=PeterKApplication"
+            mc:Ignorable="d"
+            x:Class="PeterKApplication.Pages.DpsTabbedPages.DpsModeTabbedPage"
+            android:TabbedPage.IsSwipePagingEnabled="False"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            BackgroundColor="White">
+
+    <NavigationPage Title="Dashboard" IconImageSource="dashboardnav.png" HasNavigationBar="False" HasBackButton="False"
+                    BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <dpstabbedpages:DpsDashboardTabPage Title="Dashboard" IconImageSource="dashboardnav.png" />
+        </x:Arguments>
+    </NavigationPage>
+    <!--<NavigationPage Title="Offers" IconImageSource="icon2a.png" HasNavigationBar="False" HasBackButton="False"
+                    BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <dpstabbedpages:DpsOffersTabPage Title="Offers" IconImageSource="icon2a.png" />
+        </x:Arguments>
+    </NavigationPage>-->
+    <NavigationPage Title="Orders" IconImageSource="icon2a.png" HasNavigationBar="False" HasBackButton="False"
+                    BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <ownerOrdersTabPages:OwnerOrdersTabOrdersListingPage />
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

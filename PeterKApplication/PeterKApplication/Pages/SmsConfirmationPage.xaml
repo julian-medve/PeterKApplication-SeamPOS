@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Name="This" xmlns:controls="clr-namespace:PeterKApplication.Controls"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             BindingContext="{x:Static viewModels:SmsConfirmationPageViewModel.Self}"
+             x:Class="PeterKApplication.Pages.SmsConfirmationPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:HeaderText Text="Enter Email OR Text (SMS) Code" IsBig="True" HasBackground="False" />
+            <controls:AppButton Text="RE-SEND CODE" IsBig="False" WidthRequest="100" OnClicked="AppButton_OnOnClicked" />
+            <controls:ErrorLabel Error="{Binding ResendConfirmationCodeResponse.Error}" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" HeightRequest="20">
+                <controls:ProgressRings Rings="6" Progress="{Binding DialProgress}" />
+                <Image Source="backspace_icon.png" IsVisible="{Binding Input, Converter={StaticResource IsTruthy}}"
+                       HeightRequest="20">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <controls:ErrorLabel Error="{Binding ConfirmCodeResponse.Error}" HorizontalOptions="Center"/>
+            <controls:DialKeyboard OnKeyPressed="OnDialKeyPressed" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

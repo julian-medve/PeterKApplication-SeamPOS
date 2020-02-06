@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerOrdersTabPageViewModel.Self}"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerOrdersTabPage"
+             x:Name="This">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <controls:Logo />
+                <controls:HeaderText Text="Orders" HasBackground="True" />
+                <controls:HorizontalButton Text="Order Listing" Image="set5.png"
+                                           OnClicked="HorizontalButton_OnOnClicked" />
+                <controls:HeaderText Text="Dashboard Overview" HasBackground="True" />
+
+                <Frame CornerRadius="20" HeightRequest="30" HasShadow="False"
+                       BorderColor="{StaticResource LightDarkGrayColor}" Margin="30,0" Padding="0,5">
+                    <Grid HeightRequest="30" Margin="5,0" Padding="0" BindingContext="{x:Reference This}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Frame Grid.Column="0" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                               CornerRadius="15"
+                               HasShadow="false" BackgroundColor="{Binding Tab1.BgColor}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab1" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                               CornerRadius="15"
+                               HasShadow="False" BackgroundColor="{Binding Tab2.BgColor}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab2" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+                        <Frame Grid.Column="2" Margin="0" Padding="0" HorizontalOptions="FillAndExpand"
+                               CornerRadius="15"
+                               HasShadow="false" BackgroundColor="{Binding Tab3.BgColor}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab3" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
+
+                        <Label Grid.Column="0"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Text="Today" Margin="0" FontSize="12" TextColor="{Binding Tab1.TextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Column="1"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Text="Last 3 Days" Margin="0" FontSize="12" TextColor="{Binding Tab2.TextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab2" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label Grid.Column="2"
+                               HorizontalTextAlignment="Center"
+                               HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Text="Last 7 Days" Margin="0" FontSize="12" TextColor="{Binding Tab3.TextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="GoToTab3" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                    </Grid>
+                </Frame>
+
+                <controls:OrdersOverviewData x:Name="Tab1Data" IsVisible="False" Data="{Binding TodayData}" />
+                <controls:OrdersOverviewData x:Name="Tab2Data" IsVisible="False" Data="{Binding Last3DaysData}" />
+                <controls:OrdersOverviewData x:Name="Tab3Data" IsVisible="False" Data="{Binding WeekData}" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

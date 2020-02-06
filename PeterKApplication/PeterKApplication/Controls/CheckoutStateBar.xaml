@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PeterKApplication.Controls.CheckoutStateBar">
+  <ContentView.Content>
+        <RelativeLayout>
+            <Image Source="progress_bar.png"
+                   x:Name="ProgressBar1"
+                   RelativeLayout.XConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=.1,
+                            Constant=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=.3,
+                            Constant=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=.4,
+                            Constant=0}"/>
+
+            <Image Source="progress_bar.png"
+                   x:Name="ProgressBar2"
+                   RelativeLayout.XConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=.5,
+                            Constant=0}"
+                   RelativeLayout.YConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=.3,
+                            Constant=0}"
+                   RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=.4,
+                            Constant=0}"/>
+
+            <Grid HeightRequest="50"
+                  Margin="10"
+                  HorizontalOptions="FillAndExpand"
+                  RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=1,
+                            Constant=0}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <Image Source="checkout_list.png"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Grid.Column="0"
+                       Grid.Row="0"/>
+
+                <Image Source="payment.png"
+                       x:Name="Payment"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Grid.Column="2"
+                       Grid.Row="0" />
+
+                <Image Source="confirm_payment.png"
+                       x:Name="Confirmation"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       HeightRequest="30"
+                       WidthRequest="30"
+                       Grid.Column="4"
+                       Grid.Row="0" />
+
+                <Label Text="Cart"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       FontSize="Micro"
+                       Grid.Column="0"
+                       Grid.Row="1"/>
+
+                <Label Text="Payment"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       FontSize="Micro"
+                       Grid.Column="2"
+                       Grid.Row="1"/>
+
+                <Label Text="Confirmation"
+                       HorizontalOptions="Center"
+                       VerticalOptions="End"
+                       FontSize="Micro"
+                       Grid.Column="4"
+                       Grid.Row="1"/>
+
+            </Grid>
+        </RelativeLayout>
+        
+  </ContentView.Content>
+</ContentView>

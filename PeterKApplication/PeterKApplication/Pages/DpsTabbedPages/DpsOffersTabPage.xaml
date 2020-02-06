@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             mc:Ignorable="d"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             x:Name="This"
+             x:Class="PeterKApplication.Pages.DpsTabbedPages.DpsOffersTabPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:NavigationBar HasBackButton="False"
+                                    LeftImage="{Binding LeftNavigationBarImage, Source={x:Reference This}}"
+                                    LeftImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}"
+                                    CenterImage="Grp1Icon.png"
+                                    CenterImageHeight="64"
+                                    Padding="10, 0" />
+
+            <StackLayout>
+                <controls:AppSearchBar Placeholder="Search"
+                                       RightSideIcon="False"
+                                       Text="{Binding Search}"
+                                       Margin="10"
+                                       Padding="20, 0" />
+                <controls:TabControl Tabs="{Binding Tabs, Source={x:Reference This}}"
+                                     HasUnderline="True"
+                                     x:Name="tabctrl" />
+            </StackLayout>
+
+            <StackLayout>
+                <ScrollView x:Name="Tab1"/>
+                <controls:CouponList Coupons="{Binding FilteredCoupons}"
+                                      x:Name="Tab2"
+                                      DefaultImage="Cart_Icon.png"
+                                      SelectedImage="redcart.png"
+                                      ItemSelected="CouponList_ItemSelected" />
+                <controls:CheckoutHoverMenu Text="{Binding Total, StringFormat='SUBTOTAL: {0}'}"
+                                            Number="{Binding TotalQuantity}"
+                                            Primary="False"
+                                            IsVisible="{Binding HasSelectedItems}"
+                                            Clicked="CheckoutHoverMenu_OnClicked" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

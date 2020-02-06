@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:ownerTabbedPages="clr-namespace:PeterKApplication.Pages.OwnerTabbedPages;assembly=PeterKApplication"
+            xmlns:androidSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerTabbedPage"
+            androidSpecific:TabbedPage.ToolbarPlacement="Bottom"
+            Title="Dashboard">
+    <NavigationPage Title="Dashboard" IconImageSource="dashboardnav.png" HasNavigationBar="False" HasBackButton="False" BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <ownerTabbedPages:OwnerDashboardTabPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Products" IconImageSource="NAV2.png" HasNavigationBar="False" HasBackButton="False" BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <ownerTabbedPages:OwnerProductsTabPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Orders" IconImageSource="Orders_Icon.png" HasNavigationBar="False" HasBackButton="False" BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <ownerTabbedPages:OwnerOrdersTabPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="Business" IconImageSource="Business_Icon.png" HasNavigationBar="False" HasBackButton="False" BarTextColor="Black" BarBackgroundColor="White">
+        <x:Arguments>
+            <ownerTabbedPages:OwnerBusinessTabPage/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

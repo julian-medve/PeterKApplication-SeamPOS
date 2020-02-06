@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerWalkThroughPage"
+             x:Name="This">
+    <ContentPage.Content>
+        <StackLayout BindingContext="{x:Reference This}" HorizontalOptions="FillAndExpand">
+            <controls:Logo />
+            <StackLayout HorizontalOptions="FillAndExpand">
+                <!-- <StackLayout x:Name="BusinessOperation" IsVisible="True"> -->
+                <!--     <controls:CircledNumber Text="1"/> -->
+                <!--     <controls:HeaderText Text="Your Business Operation" HasBackground="False" IsBig="True" IsBold="True"/> -->
+                <!--     <controls:HeaderText Text="PHYSICAL LOCATION" HasBackground="False" IsBig="True" IsBold="True"/> -->
+                <!--     <Label Text="BRANCH / STORE / OFFICE / RESTAURANT" HorizontalOptions="Center"/> -->
+                <!--     <controls:HeaderText Text="ONLINE" HasBackground="False" IsBig="True" IsBold="True"/> -->
+                <!--     <Label Text="NO PHYSICAL LOCATION ONLINE SELLING ONLY." HorizontalOptions="Center"/> -->
+                <!--     <controls:ChoiceRings SingleChoice="True" Items="{Binding BusinessOperationItems}"/> -->
+                <!-- </StackLayout> -->
+                <StackLayout x:Name="BusinessCategory" IsVisible="False">
+                    <controls:CircledNumber Text="1" />
+                    <controls:HeaderText Text="Select Your Business Category" HasBackground="False" IsBig="True"
+                                         IsBold="True" />
+                    <controls:ChoiceRings Items="{Binding BusinessCategoryItems}" />
+                </StackLayout>
+                <!-- <StackLayout x:Name="BusinessSubCategory" IsVisible="False"> -->
+                <!--     <controls:CircledNumber Text="2" /> -->
+                <!--     <controls:HeaderText Text="Retail Sub Category" HasBackground="False" IsBig="True" IsBold="True" /> -->
+                <!--     <controls:ChoiceRings Items="{Binding BusinessSubCategoryItems}" /> -->
+                <!-- </StackLayout> -->
+                <StackLayout x:Name="BusinessSetup" IsVisible="False">
+                    <controls:CircledNumber Text="2" />
+                    <controls:HeaderText Text="Your Business Setup" HasBackground="False" IsBig="True" IsBold="True" />
+                    <Label Text="A REGISTERED BUSINESS" HorizontalOptions="Center" />
+                    <Label Text="SOLE PROPRIETOR / PARTNERSHIP / LIMITED COMPANY" HorizontalOptions="Center" />
+                    <controls:ChoiceRings SingleChoice="True" Items="{Binding BusinessSetupItems}" />
+                </StackLayout>
+                <StackLayout x:Name="BusinessConfirmation" IsVisible="False">
+                    <controls:CircledNumber Text="3" />
+                    <controls:HeaderText Text="BUSINESS CONFIRMATION" HasBackground="True" IsBig="False" IsBold="True" />
+                    <StackLayout x:Name="PlusImage">
+                        <controls:CircledNumber Text="+" Clicked="TapGestureRecognizer_OnTapped" />
+                    </StackLayout>
+                    <controls:PairedList Items="{Binding BusinessConfirmationItems}" SingleSelection="True"
+                                         ListItemTapped="PairedList_OnListItemTapped" />
+                </StackLayout>
+                <StackLayout x:Name="BusinessLocation" IsVisible="False" HorizontalOptions="FillAndExpand">
+                    <controls:HeaderText Text="Set Business Location" HasBackground="False" IsBig="True" />
+                    <Label Text="SET UP YOUR BUSINESS LOCATION" HorizontalOptions="CenterAndExpand" />
+                    <Grid WidthRequest="350" HeightRequest="350" HorizontalOptions="CenterAndExpand" Margin="0,30">
+                        <BoxView WidthRequest="350" HeightRequest="350" CornerRadius="175"
+                                 BackgroundColor="{StaticResource LightGrayColor}" HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand" />
+                        <Image Source="ImaePlacement.png" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                    </Grid>
+
+                    <controls:ErrorLabel HorizontalOptions="Center"
+                                         Error="{Binding BindingContext.UploadBusinessResponse.Error}" AnyError="True" />
+
+                    <controls:AppButton Text="Add my location" IsOutline="True" HorizontalOptions="CenterAndExpand"
+                                        OnClicked="AddLocationClicked" />
+
+                    <Label Text="Skip" TextColor="{StaticResource MainBlueColor}" HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="Center" Margin="10">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnSkipTapped" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20"
+                         IsVisible="{Binding IsNotFinalStep}">
+                <Image Source="back_w_icon.png" HorizontalOptions="FillAndExpand" HeightRequest="50" WidthRequest="50">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <StackLayout HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsNotFinalStep}">
+                    <controls:AppButton Text="Next Step" HorizontalOptions="FillAndExpand"
+                                        OnClicked="OnNextStepClicked" />
+                </StackLayout>
+                <Label Text="Skip" TextColor="{StaticResource MainBlueColor}" HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSkipTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

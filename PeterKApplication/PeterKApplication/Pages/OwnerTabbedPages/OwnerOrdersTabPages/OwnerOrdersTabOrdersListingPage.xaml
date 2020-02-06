@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:PeterKApplication.Controls;assembly=PeterKApplication"
+             xmlns:viewModels="clr-namespace:PeterKApplication.ViewModels;assembly=PeterKApplication"
+             xmlns:helpers="clr-namespace:PeterKApplication.Helpers;assembly=PeterKApplication"
+             x:Class="PeterKApplication.Pages.OwnerTabbedPages.OwnerOrdersTabPages.OwnerOrdersTabOrdersListingPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BindingContext="{x:Static viewModels:OwnerOrdersTabOrdersListingPageViewModel.Self}" Title="Order listing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="Menu.png"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <controls:Logo />
+            <controls:NavigationBar
+                Text="Orders Listing"
+                HasBackButton="True"
+                RightImage=""
+                RightImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}" />
+            <controls:AppSearchBar Text="{Binding Search}" Padding="20,0"/>
+            <controls:OrderList Orders="{Binding FilteredOrders}" DetailsClicked="OrderList_OnDetailsClicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
