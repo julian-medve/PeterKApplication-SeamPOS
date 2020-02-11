@@ -65,6 +65,12 @@ namespace PeterKApplication.Controls
                     if(s.Item2 != null && SingleSelection) s.Item2.Selected = false;
                 }
 
+                if(s.Item1 != null)
+                    Console.WriteLine(string.Format("{0} : {1}", s.Item1.Name, s.Item1.Color));
+
+                if(s.Item2 != null)
+                    Console.WriteLine(string.Format("{0} : {1}", s.Item2.Name, s.Item2.Color));
+
                 return s;
             }));
 

@@ -26,6 +26,11 @@ using Xamarin.Forms;
 /*using Java.IO;*/
 using File = System.IO.File;
 using System.Threading;
+using Plugin.BLE;
+using System.Diagnostics;
+using Plugin.BLE.Abstractions.Exceptions;
+using Plugin.BLE.Abstractions.Contracts;
+using Plugin.Toasts;
 
 namespace PeterKApplication.ViewModels
 {
@@ -89,9 +94,9 @@ namespace PeterKApplication.ViewModels
         }
 
 
-        public string DiscountLabel => "Discount( "  + CurrencyFormat + ")";
-        public string DeliveryLabel => "Price (" + CurrencyFormat + ")";
-        public string TotalTextWithTax => CurrencyFormat + $"{Math.Round(Total * (decimal)(Me.Tax / 100)):N2} (" + CurrencyFormat + $"{Math.Round(Total + Total * (decimal)(Me.Tax / 100)):N2})";
+        public string DiscountLabel => "Discount( "  + CurrencyFormat + ") : ";
+        public string DeliveryLabel => "Price (" + CurrencyFormat + ") : ";
+        public string TotalTextWithTax => "(" + CurrencyFormat + $"{Math.Round(Total + Total * (decimal)(Me.Tax / 100)):N2})" + CurrencyFormat + $"{Math.Round(Total * (decimal)(Me.Tax / 100)):N2}";
         public decimal Total 
         { 
             get => Products != null ? Products.Sum(s => s.Price * s.Quantity) + _deliveryPrice - _discount : 0;
@@ -691,6 +696,90 @@ namespace PeterKApplication.ViewModels
                 File = new ShareFile(filePath)
             });
 
+        }
+
+        public async Task PrintReceipt() {
+
+            var ble = CrossBluetoothLE.Current;
+            var adapter = CrossBluetoothLE.Current.Adapter;
+
+            var state = ble.State;
+            ble.StateChanged += (s, e) =>
+            {
+                Debug.WriteLine($"The bluetooth state changed to {e.NewState}");
+            };
+
+            List<IDevice> deviceList = new List<IDevice>();
+            adapter.ScanTimeout = 3000;
+            adapter.DeviceDiscovered += (s, a) => deviceList.Add(a.Device);
+
+
+            await adapter.StartScanningForDevicesAsync();
+
+
+            var notificator = DependencyService.Get<IToastNotificator>();
+
+            var options = new NotificationOptions()
+            {
+                Title = "Infomation",
+                Description = "Description"
+            };
+
+
+            if (deviceList.Count == 0)
+            {
+                options.Description = "There are no devices available to connect.";
+                await notificator.Notify(options);
+                return;
+            }
+            
+
+            try
+            {
+                options.Description = string.Format("Connecting to device : {0}", deviceList[0]);
+                await notificator.Notify(options);
+
+                IDevice currentDevice = deviceList[0];
+                await adapter.ConnectToDeviceAsync(currentDevice);
+
+                var services = await currentDevice.GetServicesAsync();
+
+                options.Description = string.Format("There are {0} services on connected Device", services.Count);
+                await notificator.Notify(options);
+
+
+                var characteristic = await services[0].GetCharacteristicAsync(Guid.Parse("d8de624e-140f-4a22-8594-e2216b84a5f2"));
+                var bytes = await characteristic.ReadAsync();
+                await characteristic.WriteAsync(bytes);
+
+                // Characteristic notifications
+                characteristic.ValueUpdated += (o, args) =>
+                {
+                    var bytes = args.Characteristic.Value;
+                };
+
+                await characteristic.StartUpdatesAsync();
+
+
+                /*// Get descriptors
+                var descriptors = await characteristic.GetDescriptorsAsync();
+
+                options.Description = string.Format("There are {0} descriptors", descriptors.Count);
+                await notificator.Notify(options);
+
+
+                // Read descriptor
+                var bytes = await descriptors[0].ReadAsync();
+
+                // Write descriptor
+                await descriptor.WriteAsync(bytes);*/
+
+
+            }
+            catch (DeviceConnectionException e)
+            {
+                // ... could not connect to device
+            }
         }
     }
 }

@@ -169,9 +169,8 @@ namespace PeterKApplication.Pages
 
         private async void PrintReceipt(object sender, EventArgs e)
         {
-            
             string filename = "PrintReceipt_" + CurrentDateTime();
-            await BindingContext.As<CheckoutViewModel>().SaveCartAsInvoiceAsync(filename);
+            await BindingContext.As<CheckoutViewModel>().PrintReceipt();
         }
 
         private async void EmailReceipt(object sender, EventArgs e)
@@ -189,6 +188,5 @@ namespace PeterKApplication.Pages
         private string CurrentDateTime() {
             return DateTime.Now.ToString("yyyyMMdd_Hmmss");
         }
-        
     }
 }

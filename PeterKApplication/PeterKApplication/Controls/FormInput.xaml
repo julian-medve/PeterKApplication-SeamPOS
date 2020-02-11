@@ -8,7 +8,7 @@
              x:Name="This" HorizontalOptions="FillAndExpand">
     <ContentView.Content>
         <StackLayout Orientation="Horizontal" BindingContext="{x:Reference This}" HorizontalOptions="FillAndExpand" Padding="0">
-            <Label Text="{Binding Label}" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,10,0,0" WidthRequest="65" LineBreakMode="WordWrap"/>
+            <Label Text="{Binding Label}" VerticalOptions="Start" HorizontalOptions="Start" Margin="10,10,0,0" WidthRequest="{Binding LabelWidth}" LineBreakMode="WordWrap"/>
             <Grid HorizontalOptions="FillAndExpand" VerticalOptions="Start" Margin="0" Padding="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>

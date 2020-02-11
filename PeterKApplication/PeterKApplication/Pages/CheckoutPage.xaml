@@ -34,23 +34,21 @@
 
                     
                     <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="20,0">
-                        <controls:FormInput Label="Address" ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryAddress}" />
-                        <controls:FormInput Label="{Binding DeliveryLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryPrice}" />
+                        <controls:FormInput Label="Address : " ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryAddress}" LabelWidth="65"/>
+                        <controls:FormInput Label="{Binding DeliveryLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding DeliveryPrice}" LabelWidth="65"/>
                     </StackLayout>
-                    
-                    
-                    
+
+
                     <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="CART OPTIONS" HasBackground="True"/>
+                    <controls:FormInput Label="{Binding DiscountLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding Discount}" LabelWidth="120"/>
 
-                    <controls:FormInput Label="{Binding DiscountLabel}" ShowChangeButton="{Binding IsEdit}" Text="{Binding Discount}" />
-
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                    <!--StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
                         <Label Text="SEND AS INVOICE" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                         <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="SendAsInvoice" BackgroundColor="Transparent"/>
-                    </StackLayout>
+                    </StackLayout-->
+                    <ImageButton Source="checkout_invoice1.png" HorizontalOptions="Fill" HeightRequest="50" Clicked="SendAsInvoice" BackgroundColor="{StaticResource LightDarkGrayColor}" Margin="0" Padding="0"/>
 
                     <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="SUB TOTAL" HasBackground="True" RightSideText="{Binding TotalLabel}" Margin="0" Padding="0"/>
-
                     <controls:HeaderText IsBold="True" IsLeftAligned="True" Text="{Binding TaxLabel}" HasBackground="True" RightSideText="{Binding TotalTextWithTax}" Margin="0" Padding="0"/>
                     
                     <Grid HorizontalOptions="FillAndExpand"
@@ -183,29 +181,20 @@
                                   VerticalOptions="Center"/>
                     </Grid-->
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
-                        <Label Text="Print Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-                        <ImageButton Source="checkout_print.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="PrintReceipt" BackgroundColor="Transparent"/>
-                    </StackLayout>
+                    <ImageButton Source="checkout_print1.png" HeightRequest="50" HorizontalOptions="Fill" Clicked="PrintReceipt" BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+                    <ImageButton Source="checkout_text1.png" HeightRequest="50" HorizontalOptions="Fill" Clicked="EmailReceipt" BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+                    <ImageButton Source="checkout_email1.png" HeightRequest="50" HorizontalOptions="Fill" Clicked="TextReceipt" BackgroundColor="{StaticResource LightDarkGrayColor}"/>
 
-                    <BoxView HorizontalOptions="FillAndExpand"
+                    <!--BoxView HorizontalOptions="FillAndExpand"
                              HeightRequest="1"
-                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
+                             BackgroundColor="{StaticResource LightDarkGrayColor}"/-->
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
+                    <!--StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
                         <Label Text="Email Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
                         <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="EmailReceipt" BackgroundColor="Transparent"/>
-                    </StackLayout>
+                    </-->
 
-                    <BoxView HorizontalOptions="FillAndExpand"
-                             HeightRequest="1"
-                             BackgroundColor="{StaticResource LightDarkGrayColor}"/>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="20,0">
-                        <Label Text="Text(SMS) Receipt" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-                        <ImageButton Source="invoice.png" HeightRequest="30" WidthRequest="30" HorizontalOptions="End" VerticalOptions="Center" Clicked="TextReceipt" BackgroundColor="Transparent"/>
-                    </StackLayout>
-                    
 
                     <!--Label Text="Price Receipt"
                            Margin="20, 0, 0, 0"

@@ -25,6 +25,9 @@ namespace PeterKApplication.Controls
         public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label", typeof(string),
             typeof(FormInput), null, BindingMode.TwoWay);
 
+        public static readonly BindableProperty LabelWidthProperty = BindableProperty.Create("LabelWidth", typeof(string),
+            typeof(FormInput), null, BindingMode.TwoWay);
+
         public static readonly BindableProperty ShowChangeButtonProperty =
             BindableProperty.Create("ShowChangeButton", typeof(bool), typeof(FormInput), false, BindingMode.TwoWay,
                 propertyChanged: Reevaluate);
@@ -75,6 +78,12 @@ namespace PeterKApplication.Controls
         {
             get => (string)GetValue(LabelProperty);
             set => SetValue(LabelProperty, value);
+        }
+
+        public string LabelWidth
+        {
+            get => (string)GetValue(LabelWidthProperty);
+            set => SetValue(LabelWidthProperty, value);
         }
 
         /// <summary>
