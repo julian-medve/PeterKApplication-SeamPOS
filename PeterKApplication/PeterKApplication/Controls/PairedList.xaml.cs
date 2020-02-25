@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PeterKApplication.Helpers;
 using PeterKApplication.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -65,11 +66,25 @@ namespace PeterKApplication.Controls
                     if(s.Item2 != null && SingleSelection) s.Item2.Selected = false;
                 }
 
-                if(s.Item1 != null)
-                    Console.WriteLine(string.Format("{0} : {1}", s.Item1.Name, s.Item1.Color));
+                if (s.Item1 != null) 
+                {
+                    if (s.Item1.Color == StaticResourceHelper.Get<Color>("MediumGrayColor"))
+                        Console.WriteLine(string.Format("{0} : {1}", s.Item1.Name, "MediumGrayColor"));
 
-                if(s.Item2 != null)
-                    Console.WriteLine(string.Format("{0} : {1}", s.Item2.Name, s.Item2.Color));
+                    if (s.Item1.Color == StaticResourceHelper.Get<Color>("LightGrayColor"))
+                        Console.WriteLine(string.Format("{0} : {1}", s.Item1.Name, "LightGrayColor"));
+
+                }
+
+                if (s.Item2 != null)
+                {
+                    if (s.Item2.Color == StaticResourceHelper.Get<Color>("MediumGrayColor"))
+                        Console.WriteLine(string.Format("{0} : {1}", s.Item2.Name, "MediumGrayColor"));
+
+                    if (s.Item2.Color == StaticResourceHelper.Get<Color>("LightGrayColor"))
+                        Console.WriteLine(string.Format("{0} : {1}", s.Item2.Name, "LightGrayColor"));
+
+                }
 
                 return s;
             }));

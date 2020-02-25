@@ -12,6 +12,7 @@ using Xamarin.Forms.Xaml;
 
 using FFImageLoading.Forms;
 using System.Threading;
+using Rg.Plugins.Popup.Services;
 
 namespace PeterKApplication.Pages
 {
@@ -21,12 +22,18 @@ namespace PeterKApplication.Pages
         private bool _isCartFinish;
         private bool _isPaymentFinish;
         private string _headerTitle;
+        private string _reference;
+
+        private ReferencePopup referencePopup;
 
         Thread syncGifThread;
 
         public CheckoutPage(List<Product> productList)
         {
             InitializeComponent();
+
+            referencePopup = new ReferencePopup();
+
             HeaderTitle = "Cart";
 
             try
@@ -38,6 +45,12 @@ namespace PeterKApplication.Pages
             {
                 System.Diagnostics.Debug.Write("Exception : " + e.ToString());    
             }
+        }
+
+        public void SetReferenceValue(string value)
+        {
+            _reference = value;
+            ShowConfirmationPage();
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -135,13 +148,22 @@ namespace PeterKApplication.Pages
 
         private async void PairedList_ListItemTapped(object sender, Controls.PairedListEventArgs e)
         {
+            if (e.Item.Name.Contains("Cheque") || e.Item.Name.Contains("Bank"))
+                await PopupNavigation.Instance.PushAsync(referencePopup);
+            else
+                ShowConfirmationPage();
+        }
+
+        private async void ShowConfirmationPage()
+        {
+
             CartStage.IsVisible = false;
             PaymentStage.IsVisible = false;
             ConfirmationStage.IsVisible = true;
             IsPaymentFinish = true;
             HeaderTitle = "Finish";
-            
-            await BindingContext.As<CheckoutViewModel>().Save(OrderStatus.Paid);
+
+            await BindingContext.As<CheckoutViewModel>().Save(OrderStatus.Paid, _reference);
 
             syncGifThread = new Thread(async () => await SyncGifImage());
             syncGifThread.Start();

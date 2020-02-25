@@ -38,6 +38,9 @@ namespace PeterKApplication.Shared.Models
         [NotMapped] public List<Product> OrderProductItems { get; set; }
 
         [NotMapped] public int OrderProductsHeight { get; set; }
+
+        [NotMapped] public string Reference { get; set; }
+
         public string Image
         {
             get

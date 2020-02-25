@@ -68,10 +68,12 @@ namespace PeterKApplication.ViewModels
             using (var db = new LocalDbContext())
             {
                 PaymentTypes = db.PaymentTypes.ToList();
+
+                foreach (var item in PaymentTypes)
+                    Console.WriteLine("item : " + item.Image + " : " + item.Name);
             }
         }
 
-        
 
         public string CheckoutImage
         {
@@ -127,7 +129,8 @@ namespace PeterKApplication.ViewModels
                     var item = new PairedListItem
                     {
                         Id = paymenttype.Id,
-                        Name = paymenttype.Name
+                        Name = paymenttype.Name,
+                        Image = paymenttype.Image
                     };
 
                     var c = list.Count - 1;
@@ -191,7 +194,7 @@ namespace PeterKApplication.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async Task Save(OrderStatus status)
+        public async Task Save(OrderStatus status, string reference)
         {
             using (var db = new LocalDbContext())
             {
@@ -212,6 +215,7 @@ namespace PeterKApplication.ViewModels
                     Discount    = Discount,
                     OrderStatus = status,
                     IsSynced = false,
+                    Reference = reference,
                 };
 
                 

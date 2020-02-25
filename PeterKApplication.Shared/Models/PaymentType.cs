@@ -7,6 +7,7 @@ namespace PeterKApplication.Shared.Models
     public class PaymentType : BaseEntity
     {
         public string Name { get; set; }
+        public string Image { get; set; }
 
         public ICollection<BusinessPaymentType> BusinessesPaymentTypes { get; set; }
     }

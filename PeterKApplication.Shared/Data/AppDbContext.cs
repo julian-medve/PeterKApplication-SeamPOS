@@ -188,10 +188,10 @@ namespace PeterKApplication.Shared.Data
             builder
                 .Entity<PaymentType>()
                 .HasData(
-                    new PaymentType { Id = Guid.Parse("25fa086b-5288-443b-b157-a0f6e748cbf0"), Name = "Cash" },
-                    new PaymentType { Id = Guid.Parse("3d8702a0-a604-4139-8bd6-66fe76080064"), Name = "mPesa" },
-                    new PaymentType { Id = Guid.Parse("70376e3b-012b-45f7-894c-bfb77c8f0414"), Name = "Cheque" },
-                    new PaymentType { Id = Guid.Parse("cab752fd-1ec7-4aa4-9493-3a7527032084"), Name = "Bank Transfer" });
+                    new PaymentType { Id = Guid.Parse("25fa086b-5288-443b-b157-a0f6e748cbf0"), Name = "Cash", Image = "payment_option_cash.png" },
+                    new PaymentType { Id = Guid.Parse("3d8702a0-a604-4139-8bd6-66fe76080064"), Name = "mPesa", Image = "payment_option_mpesa.png" },
+                    new PaymentType { Id = Guid.Parse("70376e3b-012b-45f7-894c-bfb77c8f0414"), Name = "Cheque", Image = "payment_option_cheque.png" },
+                    new PaymentType { Id = Guid.Parse("cab752fd-1ec7-4aa4-9493-3a7527032084"), Name = "Bank Transfer", Image = "payment_option_bank.png" });
 
             /*        new PaymentType {Id = Guid.Parse("d2ec5a91-a99e-46fc-942a-4a36b3173456"), Name = "Bank Transfer"});*/
 

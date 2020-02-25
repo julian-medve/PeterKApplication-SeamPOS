@@ -387,6 +387,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="payment_option_bank.png" />
+    <Content Include="payment_option_cash.png" />
+    <Content Include="payment_option_cheque.png" />
+    <Content Include="payment_option_mpesa.png" />
     <Content Include="Pending_Yellow.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>

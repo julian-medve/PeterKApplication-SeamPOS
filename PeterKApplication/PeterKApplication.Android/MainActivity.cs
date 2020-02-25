@@ -55,6 +55,11 @@ namespace PeterKApplication.Android
             
             App.RegisterType<IInitializationService, InitializationService>();
 
+
+            //  Custom Popup
+            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+
+
             var app = new App();
             
             LoadApplication(app);

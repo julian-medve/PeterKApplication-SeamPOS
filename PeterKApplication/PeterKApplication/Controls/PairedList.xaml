@@ -18,41 +18,46 @@
                             <!-- first in a pair -->
                             <Frame Grid.Column="0" HasShadow="false"
                                    IsVisible="{Binding Item2, Converter={StaticResource IsTruthy}}"
-                                   BackgroundColor="{Binding Item1.Color}"
-                                   HorizontalOptions="FillAndExpand" Margin="0,0,2.5,0">
+                                   BackgroundColor="LightGray"
+                                   HorizontalOptions="FillAndExpand" 
+                                   Margin="0"
+                                   Padding="0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ItemTapped, Source={x:Reference This}}"
                                                           CommandParameter="{Binding Item1}" />
                                 </Frame.GestureRecognizers>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image
+                                <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+                                    <ImageButton
                                         Source="{Binding Item1.Image}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        WidthRequest="30"
-                                        HeightRequest="30" Margin="5,7.5" />
-                                    <Label Text="{Binding Item1.Name}" VerticalOptions="CenterAndExpand"
-                                           FontAttributes="Bold" />
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        Command="{Binding ItemTapped, Source={x:Reference This}}" 
+                                        CommandParameter="{Binding Item1}" />
+                                    <!--Label Text="{Binding Item1.Name}" VerticalOptions="CenterAndExpand"
+                                           FontAttributes="Bold" /-->
                                 </StackLayout>
                             </Frame>
                             <!-- second in a pair -->
                             <Frame Grid.Column="1" HasShadow="false"
                                    IsVisible="{Binding Item2, Converter={StaticResource IsTruthy}}"
-                                   BackgroundColor="{Binding Item2.Color}"
-                                   HorizontalOptions="FillAndExpand" Margin="2.5,0,0,0">
+                                   BackgroundColor="LightGray"
+                                   HorizontalOptions="FillAndExpand"
+                                   Margin="0"
+                                   Padding="0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ItemTapped, Source={x:Reference This}}"
                                                           CommandParameter="{Binding Item2}" />
                                 </Frame.GestureRecognizers>
-                                <StackLayout Orientation="Horizontal">
-                                    <Image
+                                <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+                                    <ImageButton
                                         Source="{Binding Item2.Image}"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center"
-                                        WidthRequest="30"
-                                        HeightRequest="30" Margin="5,7.5" />
-                                    <Label Text="{Binding Item2.Name}" VerticalOptions="CenterAndExpand"
-                                           FontAttributes="Bold" />
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand" 
+                                        Command="{Binding ItemTapped, Source={x:Reference This}}" 
+                                        CommandParameter="{Binding Item2}" />
+                                    
+                                    <!--Label Text="{Binding Item2.Name}" VerticalOptions="CenterAndExpand"
+                                           FontAttributes="Bold" /-->
                                 </StackLayout>
                             </Frame>
                         </Grid>

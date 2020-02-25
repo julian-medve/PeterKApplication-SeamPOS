@@ -20741,163 +20741,175 @@ namespace PeterKApplication.Android
 			public const int payment_blue = 2131165595;
 			
 			// aapt resource value: 0x7F07019C
-			public const int Pending_Yellow = 2131165596;
+			public const int payment_option_bank = 2131165596;
 			
 			// aapt resource value: 0x7F07019D
-			public const int plusbutton = 2131165597;
+			public const int payment_option_cash = 2131165597;
 			
 			// aapt resource value: 0x7F07019E
-			public const int PlusIconButton = 2131165598;
+			public const int payment_option_cheque = 2131165598;
 			
 			// aapt resource value: 0x7F07019F
-			public const int Prev = 2131165599;
+			public const int payment_option_mpesa = 2131165599;
 			
 			// aapt resource value: 0x7F0701A0
-			public const int progress_bar = 2131165600;
+			public const int Pending_Yellow = 2131165600;
 			
 			// aapt resource value: 0x7F0701A1
-			public const int progress_bar_blue = 2131165601;
+			public const int plusbutton = 2131165601;
 			
 			// aapt resource value: 0x7F0701A2
-			public const int redcart = 2131165602;
+			public const int PlusIconButton = 2131165602;
 			
 			// aapt resource value: 0x7F0701A3
-			public const int roundedbg = 2131165603;
+			public const int Prev = 2131165603;
 			
 			// aapt resource value: 0x7F0701A4
-			public const int roundedbgdark = 2131165604;
+			public const int progress_bar = 2131165604;
 			
 			// aapt resource value: 0x7F0701A5
-			public const int RoundedRectangleBlue = 2131165605;
+			public const int progress_bar_blue = 2131165605;
 			
 			// aapt resource value: 0x7F0701A6
-			public const int RoundedRectangleButtonBlue = 2131165606;
+			public const int redcart = 2131165606;
 			
 			// aapt resource value: 0x7F0701A7
-			public const int RoundedRectangleButtonBW = 2131165607;
+			public const int roundedbg = 2131165607;
 			
 			// aapt resource value: 0x7F0701A8
-			public const int RoundedRectangleButtonRW = 2131165608;
+			public const int roundedbgdark = 2131165608;
 			
 			// aapt resource value: 0x7F0701A9
-			public const int RoundedRectangleGrey = 2131165609;
+			public const int RoundedRectangleBlue = 2131165609;
 			
 			// aapt resource value: 0x7F0701AA
-			public const int SearchBox = 2131165610;
+			public const int RoundedRectangleButtonBlue = 2131165610;
 			
 			// aapt resource value: 0x7F0701AB
-			public const int SearchIcon = 2131165611;
-			
-			// aapt resource value: 0x7F0701AD
-			public const int SelectedItemsHM = 2131165613;
+			public const int RoundedRectangleButtonBW = 2131165611;
 			
 			// aapt resource value: 0x7F0701AC
-			public const int SelectedItems_1 = 2131165612;
+			public const int RoundedRectangleButtonRW = 2131165612;
+			
+			// aapt resource value: 0x7F0701AD
+			public const int RoundedRectangleGrey = 2131165613;
 			
 			// aapt resource value: 0x7F0701AE
-			public const int SeperatorLine = 2131165614;
+			public const int SearchBox = 2131165614;
 			
 			// aapt resource value: 0x7F0701AF
-			public const int set1 = 2131165615;
-			
-			// aapt resource value: 0x7F0701B0
-			public const int set10 = 2131165616;
+			public const int SearchIcon = 2131165615;
 			
 			// aapt resource value: 0x7F0701B1
-			public const int set2 = 2131165617;
+			public const int SelectedItemsHM = 2131165617;
+			
+			// aapt resource value: 0x7F0701B0
+			public const int SelectedItems_1 = 2131165616;
 			
 			// aapt resource value: 0x7F0701B2
-			public const int set3 = 2131165618;
+			public const int SeperatorLine = 2131165618;
 			
 			// aapt resource value: 0x7F0701B3
-			public const int set4 = 2131165619;
+			public const int set1 = 2131165619;
 			
 			// aapt resource value: 0x7F0701B4
-			public const int set5 = 2131165620;
+			public const int set10 = 2131165620;
 			
 			// aapt resource value: 0x7F0701B5
-			public const int set6 = 2131165621;
+			public const int set2 = 2131165621;
 			
 			// aapt resource value: 0x7F0701B6
-			public const int set7 = 2131165622;
+			public const int set3 = 2131165622;
 			
 			// aapt resource value: 0x7F0701B7
-			public const int set8 = 2131165623;
+			public const int set4 = 2131165623;
 			
 			// aapt resource value: 0x7F0701B8
-			public const int set9 = 2131165624;
+			public const int set5 = 2131165624;
 			
 			// aapt resource value: 0x7F0701B9
-			public const int settings = 2131165625;
+			public const int set6 = 2131165625;
 			
 			// aapt resource value: 0x7F0701BA
-			public const int Share_Blue = 2131165626;
+			public const int set7 = 2131165626;
 			
 			// aapt resource value: 0x7F0701BB
-			public const int Share_Grey = 2131165627;
+			public const int set8 = 2131165627;
 			
 			// aapt resource value: 0x7F0701BC
-			public const int SM_icons = 2131165628;
+			public const int set9 = 2131165628;
 			
 			// aapt resource value: 0x7F0701BD
-			public const int splash = 2131165629;
+			public const int settings = 2131165629;
 			
 			// aapt resource value: 0x7F0701BE
-			public const int staff = 2131165630;
-			
-			// aapt resource value: 0x7F0701C0
-			public const int staffmenu = 2131165632;
+			public const int Share_Blue = 2131165630;
 			
 			// aapt resource value: 0x7F0701BF
-			public const int Staff_Blue = 2131165631;
+			public const int Share_Grey = 2131165631;
+			
+			// aapt resource value: 0x7F0701C0
+			public const int SM_icons = 2131165632;
 			
 			// aapt resource value: 0x7F0701C1
-			public const int switch_thumb = 2131165633;
+			public const int splash = 2131165633;
 			
 			// aapt resource value: 0x7F0701C2
-			public const int switch_track_off = 2131165634;
-			
-			// aapt resource value: 0x7F0701C3
-			public const int switch_track_on = 2131165635;
+			public const int staff = 2131165634;
 			
 			// aapt resource value: 0x7F0701C4
-			public const int Sync_Refresh = 2131165636;
+			public const int staffmenu = 2131165636;
+			
+			// aapt resource value: 0x7F0701C3
+			public const int Staff_Blue = 2131165635;
 			
 			// aapt resource value: 0x7F0701C5
-			public const int TabMenuLine = 2131165637;
+			public const int switch_thumb = 2131165637;
 			
 			// aapt resource value: 0x7F0701C6
-			public const int TabSelected = 2131165638;
+			public const int switch_track_off = 2131165638;
 			
 			// aapt resource value: 0x7F0701C7
-			public const int TabSelected_Blue = 2131165639;
+			public const int switch_track_on = 2131165639;
 			
 			// aapt resource value: 0x7F0701C8
-			public const int TextBox = 2131165640;
+			public const int Sync_Refresh = 2131165640;
 			
 			// aapt resource value: 0x7F0701C9
-			public const int TextBox_Dropdown_Input = 2131165641;
+			public const int TabMenuLine = 2131165641;
 			
 			// aapt resource value: 0x7F0701CA
-			public const int Tick_Green = 2131165642;
+			public const int TabSelected = 2131165642;
 			
 			// aapt resource value: 0x7F0701CB
-			public const int Titleheader_bg = 2131165643;
+			public const int TabSelected_Blue = 2131165643;
 			
 			// aapt resource value: 0x7F0701CC
-			public const int tooltip_frame_dark = 2131165644;
+			public const int TextBox = 2131165644;
 			
 			// aapt resource value: 0x7F0701CD
-			public const int tooltip_frame_light = 2131165645;
+			public const int TextBox_Dropdown_Input = 2131165645;
 			
 			// aapt resource value: 0x7F0701CE
-			public const int track = 2131165646;
+			public const int Tick_Green = 2131165646;
 			
 			// aapt resource value: 0x7F0701CF
-			public const int Up = 2131165647;
+			public const int Titleheader_bg = 2131165647;
 			
 			// aapt resource value: 0x7F0701D0
-			public const int ViewCellBackground = 2131165648;
+			public const int tooltip_frame_dark = 2131165648;
+			
+			// aapt resource value: 0x7F0701D1
+			public const int tooltip_frame_light = 2131165649;
+			
+			// aapt resource value: 0x7F0701D2
+			public const int track = 2131165650;
+			
+			// aapt resource value: 0x7F0701D3
+			public const int Up = 2131165651;
+			
+			// aapt resource value: 0x7F0701D4
+			public const int ViewCellBackground = 2131165652;
 			
 			static Drawable()
 			{
