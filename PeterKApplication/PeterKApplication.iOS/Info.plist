@@ -34,5 +34,11 @@
     <string>PeterKApplication</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>whatsapp</string>
+    </array>
+  
 </dict>
 </plist>

@@ -32,7 +32,7 @@ namespace PeterKApplication.Pages
         {
             InitializeComponent();
 
-            referencePopup = new ReferencePopup();
+            referencePopup = new ReferencePopup(this);
 
             HeaderTitle = "Cart";
 
@@ -49,6 +49,7 @@ namespace PeterKApplication.Pages
 
         public void SetReferenceValue(string value)
         {
+            Console.WriteLine("Reference in Checkout : " + value);
             _reference = value;
             ShowConfirmationPage();
         }

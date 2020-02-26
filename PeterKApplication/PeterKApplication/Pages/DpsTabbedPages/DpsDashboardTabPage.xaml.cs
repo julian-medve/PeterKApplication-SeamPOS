@@ -35,10 +35,10 @@ namespace PeterKApplication.Pages.DpsTabbedPages
             {
                 new TabDefinition
                 {
-                    Title = "TOP SELLERS",
+                    Title = "PRODUCTS",
                     Element = Tab1,
                     IsSelected = true,
-                    Id = "TOP SELLERS"
+                    Id = "PRODUCTS"
                 },
                 new TabDefinition
                 {
@@ -135,6 +135,15 @@ namespace PeterKApplication.Pages.DpsTabbedPages
             var bc = BindingContext.As<OwnerProductsTabPageViewModel>();
             
             Navigation.PushAsync(new CheckoutPage(bc.Products));
+
+            bc.Products.Clear();
+        }
+
+        private void DeleteAllCarts(object sender, EventArgs e)
+        {
+            var bc = BindingContext.As<OwnerProductsTabPageViewModel>();
+            bc.Products.Clear();
+            bc.ReloadAll();
         }
     }
 }

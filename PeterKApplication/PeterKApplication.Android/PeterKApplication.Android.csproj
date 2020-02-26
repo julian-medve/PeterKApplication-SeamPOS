@@ -94,6 +94,9 @@
     <PackageReference Include="Xam.Plugin.TabView">
       <Version>1.0.4</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.Forms.OpenWhatsApp">
+      <Version>1.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

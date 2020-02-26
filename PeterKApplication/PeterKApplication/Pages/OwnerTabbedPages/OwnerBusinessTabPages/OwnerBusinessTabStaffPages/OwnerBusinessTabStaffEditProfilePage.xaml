@@ -32,7 +32,7 @@
                     <controls:FormInput Label="Phone" ShowChangeButton="{Binding IsEdit}"
                                         Text="{Binding StaffMember.PhoneNumber}" />
                     <controls:FormInput Label="PIN" ShowChangeButton="{Binding IsEdit}"
-                                        Text="{Binding StaffMember.Pin}" />
+                                        Text="{Binding PinNumber}" />
 
                     <StackLayout Margin="20" Orientation="Vertical">
                         <controls:AppButton Text="Save" IsPrimary="True" IsBig="True" OnClicked="SaveClicked" />

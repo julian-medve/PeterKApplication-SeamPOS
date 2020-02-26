@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using PeterKApplication.Extensions;
 using PeterKApplication.Helpers;
 using Xamarin.Forms;
@@ -18,6 +19,10 @@ namespace PeterKApplication.Controls
         public static readonly BindableProperty TextProperty  = BindableProperty.Create("Text", typeof(string), typeof(CheckoutHoverMenu), null, BindingMode.TwoWay);
         
         public static readonly BindableProperty PrimaryProperty  = BindableProperty.Create("Primary", typeof(bool), typeof(CheckoutHoverMenu), true, BindingMode.TwoWay, propertyChanged: Reevaluate);
+
+        public static readonly BindableProperty DeleteAllClickedCommandProperty =
+            BindableProperty.Create("DeleteAllClickedCommand", typeof(ICommand), typeof(ProductList), null,
+                BindingMode.TwoWay);
 
         private static void Reevaluate(BindableObject bindable, object oldvalue, object newvalue)
         {
@@ -49,6 +54,11 @@ namespace PeterKApplication.Controls
                     Clicked?.Invoke(this, null);
                 })
             });
+
+                DeleteAllCommand = new Command( () =>
+                {
+                    DeleteAllClicked?.Invoke(this, null);
+                });
         }
 
         public int Number
@@ -70,5 +80,9 @@ namespace PeterKApplication.Controls
         }
 
         public event EventHandler Clicked;
+
+        public event EventHandler DeleteAllClicked;
+        public Command DeleteAllCommand { get; set; }
+
     }
 }

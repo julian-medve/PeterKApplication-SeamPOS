@@ -194,7 +194,7 @@ namespace PeterKApplication.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public async Task Save(OrderStatus status, string reference)
+        public async Task Save(OrderStatus status, string reference = "")
         {
             using (var db = new LocalDbContext())
             {

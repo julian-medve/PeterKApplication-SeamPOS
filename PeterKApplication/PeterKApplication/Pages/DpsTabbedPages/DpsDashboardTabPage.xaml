@@ -16,12 +16,12 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <controls:Logo />
-            <controls:NavigationBar HasBackButton="False"
+            <!--controls:NavigationBar HasBackButton="False"
                                     LeftImage="Menu.png"
                                     LeftImageTappedCommand="{Binding Toggle, Source={x:Static helpers:ApplicationHelper.Helper}}"
                                     CenterImage="Grp1Icon.png"
                                     CenterImageHeight="64"
-                                    Padding="10, 0" />
+                                    Padding="10, 0" /-->
 
             <StackLayout>
                 <controls:AppSearchBar Placeholder="Search"
@@ -102,7 +102,9 @@
 
                 <controls:CheckoutHoverMenu Text="{Binding Total, StringFormat='SUBTOTAL: {0}'}"
                                             Number="{Binding TotalQuantity}"
-                                            IsVisible="{Binding HasSelectedItems}" Clicked="CheckoutHoverMenu_OnClicked"/>
+                                            IsVisible="{Binding HasSelectedItems}" 
+                                            Clicked="CheckoutHoverMenu_OnClicked"
+                                            DeleteAllClicked="DeleteAllCarts"/>
             </StackLayout>
         </StackLayout>
 

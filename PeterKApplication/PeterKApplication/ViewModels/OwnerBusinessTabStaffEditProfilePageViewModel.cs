@@ -21,6 +21,7 @@ namespace PeterKApplication.ViewModels
         private string _staffFullName;
         private bool _isEdit;
         private string _selectedLocationOption;
+        private string _pin;
 
         public OwnerBusinessTabStaffEditProfilePageViewModel(AuthService authService)
         {
@@ -111,6 +112,18 @@ namespace PeterKApplication.ViewModels
                 _staffFullName = StaffMember.FirstName + ' ' +  StaffMember.LastName;
                 OnPropertyChanged(nameof(StaffFullName));
 
+                _pin = _staffMember.Pin;
+                OnPropertyChanged(nameof(PinNumber));
+            }
+        }
+
+        public string PinNumber
+        {
+            get => _pin;
+            set
+            {
+                _pin = value;
+                OnPropertyChanged(nameof(PinNumber));
             }
         }
 
@@ -140,7 +153,11 @@ namespace PeterKApplication.ViewModels
                         StaffMember.LastName  = split[1];
                         break;
             }
-            
+
+
+            StaffMember.Pin = PinNumber;
+
+
             StaffMember.UserName = StaffFullName;
 
             using (var dbContext = new LocalDbContext())

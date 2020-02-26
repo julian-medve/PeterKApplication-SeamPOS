@@ -9,6 +9,7 @@
              x:Class="PeterKApplication.Controls.CheckoutHoverMenu">
   <ContentView.Content>
       <StackLayout Orientation="Horizontal"
+                   HorizontalOptions="FillAndExpand"
                    x:Name="StackLayout"
                    BindingContext="{x:Reference This}"
                    Margin="0"
@@ -27,6 +28,22 @@
                    Margin="25, 0, 0, 0"
                    TextColor="Black"
                    FontSize="Small" />
-       </StackLayout>
+
+
+            <Image Source="Cancel_Sq.png"
+                    WidthRequest="60"
+                    HeightRequest="60"
+                    VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0">
+                
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding DeleteAllCommand, Source={x:Reference This}}"
+                        CommandParameter="{Binding .}" />
+                </Image.GestureRecognizers>
+            </Image>
+
+        </StackLayout>
   </ContentView.Content>
 </ContentView>

@@ -157,7 +157,11 @@ namespace PeterKApplication.Web.Services
                     DeliveryAddress = o.DeliveryAddress,
                     TransactionNumber = o.TransactionNumber,
                     AppUserId = o.AppUserId,
-                    PaymentTypeId = o.PaymentTypeId
+                    PaymentTypeId = o.PaymentTypeId,
+
+                    // Added by Mikhaylov 
+
+                    Reference = o.Reference,
                 }).ToList(),
                 OrderItemDtos = newOrders.SelectMany(o => o.OrderItems).Select(s => new OrderItemDto
                 {

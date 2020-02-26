@@ -43,7 +43,11 @@
 
                 </StackLayout>
 
-                <controls:AppButton IsPrimary="True" IsBig="True" Text="SAVE / CONTINUE" IsOutline="True"
+                <controls:AppButton 
+                    IsPrimary="True" 
+                    IsBig="True" 
+                    Text="SAVE / CONTINUE" 
+                    IsOutline="True"
                     OnClicked="SaveAndContinue" Padding="30,20"/>
             
         </StackLayout>

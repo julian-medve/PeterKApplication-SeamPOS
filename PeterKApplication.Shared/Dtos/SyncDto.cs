@@ -137,6 +137,10 @@ namespace PeterKApplication.Shared.Dtos
         
         [Required]
         public Guid PaymentTypeId { get; set; }
+
+
+        // Added by Mikhaylov 
+        public string Reference { get; set; }
     }
 
     public class OrderItemDto: IHasId

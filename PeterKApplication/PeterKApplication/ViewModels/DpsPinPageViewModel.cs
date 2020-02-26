@@ -2,6 +2,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using PeterKApplication.Annotations;
+using PeterKApplication.Data;
 using PeterKApplication.Helpers;
 using PeterKApplication.Models;
 using PeterKApplication.Services;
@@ -48,6 +49,19 @@ namespace PeterKApplication.ViewModels
             {
                 _authService.SetToken(AuthStaffResponse.Response.StaffToken);
                 return true;
+            }
+            else
+            {
+                using (var dbContext = new LocalDbContext())
+                {
+                    foreach (var user in dbContext.Users)
+                    {
+                        if (user.Pin == AuthStaffReqDto.Pin)
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
 
             return false;

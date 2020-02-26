@@ -127,29 +127,49 @@
                                             VerticalOptions="Center"
                                             FontSize="24" />
                                     </Frame>
-                                    <Image Source="Add_Sq.png"
-                                           WidthRequest="60"
-                                           HeightRequest="60"
-                                           VerticalOptions="Center"
-                                           Margin="0, 5">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Command="{Binding AddOneCommand, Source={x:Reference This}}"
-                                                CommandParameter="{Binding .}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <Image Source="Cancel_Sq.png"
-                                           WidthRequest="60"
-                                           HeightRequest="60"
-                                           VerticalOptions="Center"
-                                           Margin="-5, 5, 0, 5">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                Command="{Binding DeleteAllCommand, Source={x:Reference This}}"
-                                                CommandParameter="{Binding .}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
 
+                                    <StackLayout Orientation="Vertical">
+                                        <Image Source="Add_Sq.png"
+                                               WidthRequest="60"
+                                               HeightRequest="60"
+                                               VerticalOptions="Center"
+                                               Margin="0, 5">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding AddOneCommand, Source={x:Reference This}}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                        
+                                        <Label HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontSize="Small"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="Red"
+                                               Text="ADD" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Vertical">
+                                        <Image Source="Cancel_Sq.png"
+                                               WidthRequest="60"
+                                               HeightRequest="60"
+                                               VerticalOptions="Center"
+                                               Margin="-5, 5, 0, 5">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding DeleteAllCommand, Source={x:Reference This}}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                        <Label HorizontalOptions="FillAndExpand"
+                                               VerticalOptions="StartAndExpand"
+                                               FontSize="Small"
+                                               HorizontalTextAlignment="Center"
+                                               Text="REMOVE" />
+                                        
+                                    </StackLayout>
+                                    
                                 </StackLayout>
 
                             </DataTemplate>

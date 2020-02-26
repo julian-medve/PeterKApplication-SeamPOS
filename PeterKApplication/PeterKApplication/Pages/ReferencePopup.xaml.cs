@@ -11,10 +11,13 @@ namespace PeterKApplication.Pages
     public partial class ReferencePopup : PopupPage
     {
         private string _reference;
+        CheckoutPage parentCheckoutPage;
 
-        public ReferencePopup()
+
+        public ReferencePopup(CheckoutPage parentCheckout)
         {
             InitializeComponent();
+            parentCheckoutPage = parentCheckout;
         }
 
         public string ReferencePayment
@@ -93,9 +96,8 @@ namespace PeterKApplication.Pages
 
         private async void SaveAndContinue(object sender, EventArgs e)
         {
+            parentCheckoutPage.SetReferenceValue(_reference);
             await PopupNavigation.Instance.PopAllAsync();
-            var bc = BindingContext.As<CheckoutPage>();
-            bc.SetReferenceValue(ReferencePayment);
         }
 
         private void OnCloseButtonTapped(object sender, EventArgs e)

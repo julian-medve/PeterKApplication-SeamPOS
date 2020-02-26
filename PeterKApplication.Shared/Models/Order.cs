@@ -39,7 +39,9 @@ namespace PeterKApplication.Shared.Models
 
         [NotMapped] public int OrderProductsHeight { get; set; }
 
-        [NotMapped] public string Reference { get; set; }
+
+        // Added by Mikhaylov 
+        public string Reference { get; set; }
 
         public string Image
         {

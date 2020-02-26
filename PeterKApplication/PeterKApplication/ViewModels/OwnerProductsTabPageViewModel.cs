@@ -84,7 +84,7 @@ namespace PeterKApplication.ViewModels
             }
         }
 
-        private void ReloadAll()
+        public void ReloadAll()
         {
             string currencyFormat = AuthService.CurrentUser().CurrencyFormat;
 
