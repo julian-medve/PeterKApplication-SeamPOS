@@ -20,8 +20,6 @@
 
                 <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
 
-                    <controls:OrderDetailProductList Products="{Binding Order.OrderProductItems}" HeightRequest="{Binding Order.OrderProductsHeight}"/>
-
                     <controls:OrderDetails Order="{Binding Order}"/>
 
                     <StackLayout Orientation="Horizontal">
@@ -50,10 +48,25 @@
 
                         </StackLayout>
 
-                        <!--StackLayout Orientation="Horizontal" Margin="20">
-                        <controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="Support" OnClicked="AppButton_SupportClicked" HorizontalOptions="FillAndExpand"/>
-                        <controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="FAQ's" OnClicked="AppButton_FaqClicked" HorizontalOptions="FillAndExpand"/-->
+                        
                     </StackLayout>
+
+                    <controls:OrderDetailProductList Products="{Binding Order.OrderProductItems}" HeightRequest="{Binding Order.OrderProductsHeight}"/>
+
+
+                    <controls:AppButton 
+                        IsPrimary="True" 
+                        IsOutline="True" 
+                        IsBig="True" 
+                        Text="Continue" 
+                        IsVisible="{Binding IsPendingOrder}"  
+                        HorizontalOptions="FillAndExpand" 
+                        OnClicked="ContinuePending" 
+                        Margin="20"/>
+                    
+                        <!--controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="Support" OnClicked="AppButton_SupportClicked" HorizontalOptions="FillAndExpand"/>
+                            <controls:AppButton IsPrimary="True" IsOutline="True" IsBig="True" Text="FAQ's" OnClicked="AppButton_FaqClicked" HorizontalOptions="FillAndExpand"/-->
+                    
                 </StackLayout>
             </ScrollView>
         </StackLayout>

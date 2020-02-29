@@ -14,6 +14,14 @@ namespace PeterKApplication.iOS
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
             UIApplication.Main(args, null, "AppDelegate");
+/*
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+
+            // Configure Raygun for the current platform
+            RaygunPlatform.Configure();
+
+            return base.FinishedLaunching(app, options);*/
         }
     }
 }

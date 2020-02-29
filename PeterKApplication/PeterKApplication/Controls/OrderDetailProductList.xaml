@@ -17,14 +17,14 @@
                 <DataTemplate>
 
                     <Grid HorizontalOptions="FillAndExpand"
-                                  Margin="10" Padding="10"
+                                  Margin="20, 0" Padding="5"
                                   WidthRequest="{Binding Source={x:Reference CollectionView}, Path=Width, Converter={StaticResource MenuFitWidthConverter}, ConverterParameter='20'}">
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer CommandParameter="{Binding .}"
                                                           Command="{Binding ItemTapped, Source={x:Reference This}}" />
                         </Grid.GestureRecognizers>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70" />
+                            <ColumnDefinition Width="50" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
 
@@ -32,8 +32,8 @@
                                     Source="{Binding ImageModel.ImageData, Converter={StaticResource ByteArrayToImageSource}}"
                                     IsVisible="{Binding ImageModel.ImageData, Converter={StaticResource IsTruthy}}"
                                     Grid.Column="0"
-                                    WidthRequest="60"
-                                    HeightRequest="60"
+                                    WidthRequest="45"
+                                    HeightRequest="45"
                                     HorizontalOptions="StartAndExpand"
                                     VerticalOptions="StartAndExpand" />
 
@@ -42,7 +42,7 @@
                                        Grid.Column="0"
                                        WidthRequest="30"
                                        HeightRequest="30"
-                                       Margin="15"
+                                       Margin="5"
                                        HorizontalOptions="StartAndExpand"
                                        VerticalOptions="StartAndExpand" />
 

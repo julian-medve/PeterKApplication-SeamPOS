@@ -566,6 +566,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
+    <PackageReference Include="Raygun4Xamarin.Forms">
+      <Version>1.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Pdf">
       <Version>17.3.0.33</Version>
     </PackageReference>
@@ -583,6 +586,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>4.3.0.947036</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms.OpenWhatsApp">
+      <Version>1.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

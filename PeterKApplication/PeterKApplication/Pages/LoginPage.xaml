@@ -15,7 +15,7 @@
             </Grid.RowDefinitions>
             <StackLayout Grid.Row="0" Orientation="Vertical" BackgroundColor="{StaticResource LightDarkGrayColor}">
                 <controls:Logo />
-                <Image Source="ImaePlacement.png" HeightRequest="30" Margin="75" HorizontalOptions="CenterAndExpand" />
+                <Image Source="splash-content.png" HeightRequest="30" Margin="75" HorizontalOptions="CenterAndExpand" />
                 <controls:TabControl Tabs="{Binding Tabs, Source={x:Reference This}}"
                                      HeightRequest="42"
                                      BackgroundColor="{StaticResource LightDarkGrayColor}" />

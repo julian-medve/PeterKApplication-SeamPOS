@@ -55,6 +55,42 @@ namespace PeterKApplication.Pages.DpsTabbedPages
             };
         }
 
+        public DpsDashboardTabPage(Order pendingOrder)
+        {
+            var bc = BindingContext.As<OwnerProductsTabPageViewModel>();
+            bc.Products = pendingOrder.OrderProductItems;
+
+            InitializeComponent();
+            BindingContext = DependencyService.Resolve<OwnerProductsTabPageViewModel>();
+
+            _canSelect = false;
+
+            Tabs = new List<TabDefinition>
+            {
+                new TabDefinition
+                {
+                    Title = "PRODUCTS",
+                    Element = Tab1,
+                    IsSelected = true,
+                    Id = "PRODUCTS"
+                },
+                new TabDefinition
+                {
+                    Title = "CATEGORIES",
+                    Element = Tab2,
+                    Id = "CATEGORIES"
+                },
+                new TabDefinition
+                {
+                    Title = "MPRODUCTS",
+                    Element = Tab3,
+                    Id = "MPRODUCTS"
+                }
+            };
+
+
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

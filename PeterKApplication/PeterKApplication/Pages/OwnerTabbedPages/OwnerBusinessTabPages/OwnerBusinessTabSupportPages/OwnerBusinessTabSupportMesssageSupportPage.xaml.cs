@@ -9,6 +9,7 @@ using PeterKApplication.Models;
 using PeterKApplication.Services;
 using PeterKApplication.Shared.Dtos;
 using Xamarin.Forms;
+using Xamarin.Forms.OpenWhatsApp;
 using Xamarin.Forms.Xaml;
 
 namespace PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBusinessTabSupportPages
@@ -18,6 +19,8 @@ namespace PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBu
     {
         private ApiExecutionResponse _supportDtoResponse;
         private SupportDto _supportDto = new SupportDto();
+
+        
 
         public OwnerBusinessTabSupportMessageSupport()
         {
@@ -56,6 +59,11 @@ namespace PeterKApplication.Pages.OwnerTabbedPages.OwnerBusinessTabPages.OwnerBu
                 _supportDtoResponse = value;
                 OnPropertyChanged(nameof(SupportDtoResponse));
             }
+        }
+
+        private void OpenWhatsApp(object sender, EventArgs e)
+        {
+            Chat.Open("Contact Phone Number", SupportDto.Message);
         }
     }
 }

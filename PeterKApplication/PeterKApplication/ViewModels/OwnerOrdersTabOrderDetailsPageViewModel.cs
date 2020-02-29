@@ -13,8 +13,10 @@ namespace PeterKApplication.ViewModels
     public class OwnerOrdersTabOrderDetailsPageViewModel : INotifyPropertyChanged
     {
         private Order _order;
+
         private List<VerticalConnectedProgressStep> _orderSteps;
         public event PropertyChangedEventHandler PropertyChanged;
+
 
         public Order Order
         {
@@ -24,6 +26,7 @@ namespace PeterKApplication.ViewModels
                 _order = value;
                 OnPropertyChanged(nameof(Order));
                 OnPropertyChanged(nameof(OrderSteps));
+                OnPropertyChanged(nameof(IsPendingOrder));
             }
         }
 
@@ -63,5 +66,7 @@ namespace PeterKApplication.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public bool IsPendingOrder => Order?.OrderStatus == OrderStatus.Pending;
     }
 }

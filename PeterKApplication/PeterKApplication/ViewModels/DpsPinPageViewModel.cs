@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using PeterKApplication.Annotations;
@@ -47,6 +48,8 @@ namespace PeterKApplication.ViewModels
 
             if (!AuthStaffResponse.HasError)
             {
+                Debug.WriteLine("_authService in LoginDPS : " + _authService);
+
                 _authService.SetToken(AuthStaffResponse.Response.StaffToken);
                 return true;
             }

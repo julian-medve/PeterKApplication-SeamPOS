@@ -20911,6 +20911,9 @@ namespace PeterKApplication.Android
 			// aapt resource value: 0x7F0701D4
 			public const int ViewCellBackground = 2131165652;
 			
+			// aapt resource value: 0x7F0701D5
+			public const int whatsappchat_button2 = 2131165653;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

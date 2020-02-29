@@ -28,7 +28,7 @@
                            HorizontalOptions="CenterAndExpand"
                            HorizontalTextAlignment="Center"/>
                     
-                    <controls:InputWithBorder Placeholder="Business Location" Padding="35,0" Text="{Binding LocationMember.Name}"/>
+                    <controls:InputWithBorder Placeholder="Business Location" Text="{Binding LocationMember.Name}" Margin="20, 0"/>
                     
                     <StackLayout Margin="20" Orientation="Vertical">
                         <controls:AppButton Text="Save" IsPrimary="True" IsBig="True" OnClicked="SaveClicked" />

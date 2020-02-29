@@ -28,6 +28,8 @@
                     <Label Text="CORRESPOND." FontAttributes="Bold" HorizontalOptions="Center" />
                     <Label Text="Terms of Service." TextColor="{StaticResource MainBlueColor}"
                            HorizontalOptions="Center" />
+
+                    <ImageButton Source="whatsappchat_button2.png" Clicked="OpenWhatsApp"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

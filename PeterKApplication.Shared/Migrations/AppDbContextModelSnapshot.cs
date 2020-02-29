@@ -426,7 +426,7 @@ namespace PeterKApplication.Shared.Migrations
 
                     b.ToTable("BusinessLocations");
 
-                    b.HasData(
+                    /*b.HasData(
                         new
                         {
                             Id = new Guid("00d7748d-fedb-4b62-88ee-79eb568031cf"),
@@ -440,7 +440,7 @@ namespace PeterKApplication.Shared.Migrations
                             IsDeleted = false,
                             IsSynced = false,
                             Name = "Online"
-                        });
+                        });*/
                 });
 
             modelBuilder.Entity("PeterKApplication.Shared.Models.BusinessPaymentType", b =>

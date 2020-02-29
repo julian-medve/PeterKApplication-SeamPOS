@@ -10,6 +10,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Raygun4Xamarin.Forms;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 
@@ -23,6 +24,11 @@ namespace PeterKApplication
         public App()
         {
             InitializeComponent();
+
+
+            RaygunClient.Init("Mz7WLAWlFEHhHUvBmZYADw");
+            RaygunClient.Current.EnableCrashReporting();
+
 
             DependencyResolver.ResolveUsing(type => _container.IsRegistered(type) ? _container.Resolve(type) : null);
             

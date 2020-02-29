@@ -61,7 +61,7 @@ namespace PeterKApplication.ViewModels
                     }
                 };
 
-                RevenueData = new List<OverviewDataCenterDefinition>
+                List<OverviewDataCenterDefinition> tempRevenue = new List<OverviewDataCenterDefinition>
                 {
                     new OverviewDataCenterDefinition
                     {
@@ -70,23 +70,26 @@ namespace PeterKApplication.ViewModels
                         CenterValue = dbContext.Orders.Include(o => o.OrderItems)
                             .Sum(o => o.OrderItems.Sum(i => i.Price * i.Quantity))
                     },
-                    new OverviewDataCenterDefinition
-                    {
-                        Title = "Cash",
-                        CenterColor = green,
-                        CenterValue = dbContext.Orders.Include(o => o.OrderItems)
-                            .Where(v => v.PaymentType.Name == "Cash")
-                            .Sum(o => o.OrderItems.Sum(i => i.Price * i.Quantity))
-                    },
-                    new OverviewDataCenterDefinition
-                    {
-                        Title = "Mobile Money",
-                        CenterColor = blue,
-                        CenterValue = dbContext.Orders.Include(o => o.OrderItems)
-                            .Where(v => v.PaymentType.Name != "Cash")
-                            .Sum(o => o.OrderItems.Sum(i => i.Price * i.Quantity))
-                    }
                 };
+
+                int i = 0;
+                foreach (var paymentType in dbContext.PaymentTypes)
+                {
+                    
+                    tempRevenue.Add(new OverviewDataCenterDefinition
+                    {
+                        Title = paymentType.Name,
+                        CenterColor = i % 2 == 0 ? green : blue,
+                        CenterValue = dbContext.Orders.Include(o => o.OrderItems)
+                            .Where(v => v.PaymentType.Name == paymentType.Name)
+                            .Sum(o => o.OrderItems.Sum(i => i.Price * i.Quantity))
+                    });
+                    i++;
+                }
+
+                RevenueData = tempRevenue;
+
+
 
                 var last7days = DateTime.Now.Subtract(TimeSpan.FromDays(7));
                 var last30days = DateTime.Now.Subtract(TimeSpan.FromDays(30));

@@ -6,6 +6,7 @@
              x:Name="This">
     <ContentView.Content>
         <StackLayout Orientation="Vertical" BindingContext="{x:Reference This}">
+            
             <StackLayout x:Name="MainData"/>
 
             <!-- statistics text, 7 days and 30 days -->

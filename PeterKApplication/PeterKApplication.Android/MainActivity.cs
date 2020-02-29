@@ -24,6 +24,7 @@ using Color = Android.Graphics.Color;
 using Android.Support.V7.View;
 using ContextMenu.Droid;
 using FFImageLoading.Forms.Platform;
+using Raygun4Xamarin.Forms.Android;
 
 namespace PeterKApplication.Android
 {
@@ -71,6 +72,10 @@ namespace PeterKApplication.Android
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();
+
+            // Init Raygun for crash reports
+
+            RaygunPlatform.Configure(this);
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
